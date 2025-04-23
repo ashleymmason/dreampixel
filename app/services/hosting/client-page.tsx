@@ -5,6 +5,7 @@ import { Check, Server, Shield, Clock, HardDrive, Globe, HeartPulse } from "luci
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useEffect, useRef } from "react"
+import PayPalSubscriptionButton from "@/components/paypal-subscription-button"
 
 export default function HostingPageClient() {
   const animationContainer = useRef<HTMLDivElement>(null)
@@ -120,9 +121,12 @@ export default function HostingPageClient() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Link href="/contact" className="w-full">
-                <Button className="w-full bg-purple-600 hover:bg-purple-700">Get Started</Button>
-              </Link>
+              <div className="w-full">
+                <PayPalSubscriptionButton
+                  planId="P-5J124751G9892483PNAEKMZQ"
+                  buttonContainerId="paypal-button-container-P-5J124751G9892483PNAEKMZQ"
+                />
+              </div>
             </CardFooter>
           </Card>
 
