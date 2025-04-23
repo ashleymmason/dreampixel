@@ -66,9 +66,9 @@ export function Header() {
                     <Link href={service.href}>{service.name}</Link>
                   </DropdownMenuItem>
                 ))}
-                <DropdownMenuItem asChild>
+                {/* <DropdownMenuItem asChild>
                   <Link href="/services/hosting">Hosting</Link>
-                </DropdownMenuItem>
+                </DropdownMenuItem> */}
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -101,6 +101,14 @@ export function Header() {
               className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary"
             >
               <span className="relative z-10">About</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
+            </Link>
+
+            <Link
+              href="/services/hosting"
+              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary"
+            >
+              <span className="relative z-10">Hosting</span>
               <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
             </Link>
 
@@ -178,6 +186,13 @@ export function Header() {
           </Link>
           <Link href="/about" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
             <span className="font-medium">About</span>
+          </Link>
+          <Link
+            href="/services/hosting"
+            className="flex items-center space-x-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <span className="font-medium">Hosting</span>
           </Link>
           <Link href="/contact" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
             <span className="font-medium">Contact</span>
