@@ -1,61 +1,82 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { usePaypalScript } from "@/hooks/use-paypal-script"
 
 interface PayPalSubscriptionButtonProps {
   planId: string
   buttonContainerId: string
+  buttonColor?: "black" | "gold" | "blue" | "silver" | "white"
+  buttonShape?: "rect" | "pill"
+  buttonLayout?: "vertical" | "horizontal"
 }
 
-export default function PayPalSubscriptionButton({ planId, buttonContainerId }: PayPalSubscriptionButtonProps) {
+export default function PayPalSubscriptionButton({
+  planId,
+  buttonContainerId,
+  buttonColor = "black",
+  buttonShape = "rect",
+  buttonLayout = "vertical",
+}: PayPalSubscriptionButtonProps) {
   const paypalButtonRef = useRef<HTMLDivElement>(null)
-  const scriptLoaded = useRef(false)
+  const buttonRendered = useRef(false)
+  const { scriptLoaded, scriptError } = usePaypalScript()
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    // Only load the script once
-    if (scriptLoaded.current) return
+    // Only proceed if the script is loaded and the button hasn't been rendered yet
+    if (scriptLoaded && paypalButtonRef.current && !buttonRendered.current && window.paypal) {
+      try {
+        // Clear any existing content in the container
+        if (paypalButtonRef.current.firstChild) {
+          paypalButtonRef.current.innerHTML = ""
+        }
 
-    // Create and load the PayPal SDK script
-    const script = document.createElement("script")
-    script.src =
-      "https://www.paypal.com/sdk/js?client-id=AQn9jLYImfA8WwnTnwxtVp3bCnoRtY4wmskTxwkLxhQ3k9D-rVL5O4JQxPmYHRyQXXfjsm5JvAWD_v79&vault=true&intent=subscription"
-    script.setAttribute("data-sdk-integration-source", "button-factory")
-    script.async = true
+        const button = window.paypal.Buttons({
+          style: {
+            shape: buttonShape,
+            color: buttonColor,
+            layout: buttonLayout,
+            label: "subscribe",
+          },
+          createSubscription: (data: any, actions: any) => {
+            return actions.subscription.create({
+              plan_id: planId,
+            })
+          },
+          onApprove: (data: any, actions: any) => {
+            alert(`Subscription successful! Your subscription ID is: ${data.subscriptionID}`)
+          },
+        })
 
-    script.onload = () => {
-      if (window.paypal && paypalButtonRef.current) {
-        window.paypal
-          .Buttons({
-            style: {
-              shape: "rect",
-              color: "black",
-              layout: "vertical",
-              label: "subscribe",
-            },
-            createSubscription: (data: any, actions: any) =>
-              actions.subscription.create({
-                plan_id: planId,
-              }),
-            onApprove: (data: any, actions: any) => {
-              alert(`Subscription successful! Your subscription ID is: ${data.subscriptionID}`)
-            },
-          })
-          .render(`#${buttonContainerId}`)
+        if (button.isEligible()) {
+          button.render(`#${buttonContainerId}`)
+          buttonRendered.current = true
+        } else {
+          setError("PayPal button is not eligible for rendering")
+        }
+      } catch (err) {
+        setError(`Error rendering PayPal button: ${err instanceof Error ? err.message : String(err)}`)
+        console.error("PayPal button render error:", err)
       }
     }
 
-    document.body.appendChild(script)
-    scriptLoaded.current = true
+    if (scriptError) {
+      setError(`Failed to load PayPal SDK: ${scriptError.message}`)
+    }
 
+    // Cleanup function
     return () => {
-      // Clean up if component unmounts
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
+      buttonRendered.current = false
     }
-  }, [planId, buttonContainerId])
+  }, [scriptLoaded, scriptError, planId, buttonContainerId, buttonColor, buttonShape, buttonLayout])
 
-  return <div id={buttonContainerId} ref={paypalButtonRef}></div>
+  return (
+    <>
+      <div id={buttonContainerId} ref={paypalButtonRef} className="paypal-button-container"></div>
+      {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
+    </>
+  )
 }
 
 // Add TypeScript declaration for the PayPal global object

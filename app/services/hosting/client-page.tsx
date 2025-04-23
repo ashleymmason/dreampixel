@@ -5,7 +5,7 @@ import { Check, Server, Shield, Clock, HardDrive, Globe, HeartPulse } from "luci
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useEffect, useRef } from "react"
-import PayPalSubscriptionButton from "@/components/paypal-subscription-button"
+import DirectPayPalButton from "@/components/direct-paypal-button"
 
 export default function HostingPageClient() {
   const animationContainer = useRef<HTMLDivElement>(null)
@@ -122,9 +122,10 @@ export default function HostingPageClient() {
             </CardContent>
             <CardFooter>
               <div className="w-full">
-                <PayPalSubscriptionButton
+                <DirectPayPalButton
                   planId="P-5J124751G9892483PNAEKMZQ"
-                  buttonContainerId="paypal-button-container-P-5J124751G9892483PNAEKMZQ"
+                  containerId="paypal-button-container-P-5J124751G9892483PNAEKMZQ"
+                  buttonColor="black"
                 />
               </div>
             </CardFooter>
@@ -172,9 +173,13 @@ export default function HostingPageClient() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Link href="/contact" className="w-full">
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">Get Started</Button>
-              </Link>
+              <div className="w-full">
+                <DirectPayPalButton
+                  planId="P-0PB17950MK648625ENAEKVSQ"
+                  containerId="paypal-button-container-P-0PB17950MK648625ENAEKVSQ"
+                  buttonColor="gold"
+                />
+              </div>
             </CardFooter>
           </Card>
         </div>
