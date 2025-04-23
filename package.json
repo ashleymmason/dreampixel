@@ -62,7 +62,8 @@
     "framer-motion": "latest",
     "fs": "latest",
     "path": "latest",
-    "lottie-web": "latest"
+    "lottie-web": "latest",
+    "nodemailer": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

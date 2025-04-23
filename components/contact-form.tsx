@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { CheckCircle } from "lucide-react"
+import { CheckCircle, AlertCircle } from "lucide-react"
+import { sendEmail } from "@/app/actions/send-email"
 
 export default function ContactForm() {
   const [formState, setFormState] = useState({
@@ -32,26 +33,30 @@ export default function ContactForm() {
     setError("")
 
     try {
-      // In a real implementation, you would send the form data to your server
-      // For demonstration, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      // Send the form data to the server action
+      const result = await sendEmail(formState)
 
-      // Reset form
-      setFormState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
+      if (result.success) {
+        // Reset form
+        setFormState({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        })
 
-      setIsSubmitted(true)
+        setIsSubmitted(true)
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-      }, 5000)
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+        }, 5000)
+      } else {
+        setError(result.message || "There was an error submitting the form. Please try again.")
+      }
     } catch (err) {
       setError("There was an error submitting the form. Please try again.")
+      console.error("Form submission error:", err)
     } finally {
       setIsSubmitting(false)
     }
@@ -135,8 +140,12 @@ export default function ContactForm() {
       )}
 
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-red-700">{error}</p>
+        <div className="p-4 bg-red-50 border border-red-200 rounded-md flex items-start gap-2">
+          <AlertCircle className="h-5 w-5 text-red-500 mt-0.5" />
+          <div>
+            <p className="font-medium text-red-800">Error</p>
+            <p className="text-red-700">{error}</p>
+          </div>
         </div>
       )}
     </form>
