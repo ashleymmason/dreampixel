@@ -456,9 +456,6 @@ export default function WebDesignBarnstaple() {
                 height={600}
                 className="relative z-10 rounded-lg shadow-xl"
                 priority
-                onError={(e) => {
-                  e.currentTarget.src = "/placeholder.svg?key=749j2"
-                }}
               />
             </div>
           </div>
