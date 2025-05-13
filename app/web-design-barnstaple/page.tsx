@@ -302,8 +302,10 @@ export default function WebDesignBarnstaple() {
                 <Image
                   src="/images/portfolio/capstones-lookout.png"
                   alt="Capstones Lookout - Barnstaple restaurant website design"
-                  fill
+                  width={400}
+                  height={300}
                   style={{ objectFit: "cover" }}
+                  className="absolute inset-0 w-full h-full"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
@@ -325,8 +327,10 @@ export default function WebDesignBarnstaple() {
                 <Image
                   src="/images/portfolio/rjh-construction.png"
                   alt="RJH Construction - Barnstaple building company website design"
-                  fill
+                  width={400}
+                  height={300}
                   style={{ objectFit: "cover" }}
+                  className="absolute inset-0 w-full h-full"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
@@ -348,8 +352,10 @@ export default function WebDesignBarnstaple() {
                 <Image
                   src="/images/portfolio/truck-bracket.png"
                   alt="Truck Bracket - Barnstaple ecommerce website design"
-                  fill
+                  width={400}
+                  height={300}
                   style={{ objectFit: "cover" }}
+                  className="absolute inset-0 w-full h-full"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
@@ -444,12 +450,15 @@ export default function WebDesignBarnstaple() {
                 aria-hidden="true"
               ></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Barnstaple-fgusmo0685Qy0QiKAHGjaKHfR3eWoV.webp"
+                src="/images/barnstaple-reflected-in-water.webp"
                 alt="Web design in Barnstaple - town center with historic buildings along River Taw with beautiful reflections in the water"
                 width={600}
                 height={600}
                 className="relative z-10 rounded-lg shadow-xl"
                 priority
+                onError={(e) => {
+                  e.currentTarget.src = "/placeholder.svg?key=749j2"
+                }}
               />
             </div>
           </div>
@@ -524,7 +533,7 @@ export default function WebDesignBarnstaple() {
                     alt="Sheila Shepherd, Owner of Sheila Shepherd School of Reflexology"
                     width={50}
                     height={50}
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover w-[50px] h-[50px]"
                   />
                 </div>
                 <div className="ml-4">
@@ -561,7 +570,7 @@ export default function WebDesignBarnstaple() {
                     alt="Richard Summers, Founder of RCS Tuning"
                     width={50}
                     height={50}
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover w-[50px] h-[50px]"
                   />
                 </div>
                 <div className="ml-4">
@@ -596,7 +605,7 @@ export default function WebDesignBarnstaple() {
                     alt="Carole Winter, Owner of Withymead Cottage"
                     width={50}
                     height={50}
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover w-[50px] h-[50px]"
                   />
                 </div>
                 <div className="ml-4">
