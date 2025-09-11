@@ -4,6 +4,7 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
+import { CookieConsent } from "@/components/cookie-consent"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -23,7 +24,7 @@ export const metadata = {
   },
   manifest: "/site.webmanifest",
   themeColor: "#ffffff",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -42,13 +43,20 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#ffffff" />
 
-        {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) with consent mode */}
         <Script src={`https://www.googletagmanager.com/gtag/js?id=G-D91WT2D7JC`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            
+            // Configure consent mode
+            gtag('consent', 'default', {
+              'analytics_storage': 'denied',
+              'ad_storage': 'denied',
+              'wait_for_update': 500,
+            });
             
             // Configure your GA Measurement ID
             gtag('config', 'G-D91WT2D7JC', {
@@ -58,18 +66,14 @@ export default function RootLayout({
               cookie_domain: 'auto'
             });
             
-            // Debug mode - check console for issues
-            gtag('set', {
-              'debug_mode': true
-            });
-            
-            // Send a test event to verify tracking is working
+            // Check for existing consent
             document.addEventListener('DOMContentLoaded', function() {
-              gtag('event', 'page_view_test', {
-                'event_category': 'engagement',
-                'event_label': 'Initial Page Load'
-              });
-              console.log('Google Analytics: Test event sent');
+              const consent = localStorage.getItem('cookie-consent');
+              if (consent === 'accepted') {
+                gtag('consent', 'update', {
+                  'analytics_storage': 'granted'
+                });
+              }
             });
           `}
         </Script>
@@ -80,6 +84,7 @@ export default function RootLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <CookieConsent />
           </div>
         </ThemeProvider>
       </body>
