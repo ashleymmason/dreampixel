@@ -1,25 +1,16 @@
 declare global {
   interface Window {
+    paypal: any
     gtag: (
-      command: "config" | "event" | "consent",
-      targetId: string | "default" | "update",
+      command: "config" | "consent" | "event",
+      targetId: string | "update" | "default",
       config?: {
-        page_path?: string
-        transport_type?: string
-        send_page_view?: boolean
-        cookie_domain?: string
+        [key: string]: any
         analytics_storage?: "granted" | "denied"
         ad_storage?: "granted" | "denied"
-        wait_for_update?: number
-        [key: string]: any
       },
     ) => void
     dataLayer: any[]
-    paypal?: {
-      Buttons: (options: any) => {
-        render: (selector: string) => Promise<void>
-      }
-    }
   }
 }
 
