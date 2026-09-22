@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const projects = [
   { slug: "rcs-tuning", name: "RCS Tuning", industry: "Automotive", services: "Web design / E-commerce / SEO", description: "A sharper digital garage for a performance-led tuning business.", image: "/images/portfolio/rcs-tuning.png", layout: "feature" },
   { slug: "withymead-cottage", name: "Withymead Cottage", industry: "Hospitality", services: "Web design / Booking journey", description: "A calmer, clearer booking experience for a North Devon escape.", image: "/images/portfolio/withymead-cottage.png", layout: "split" },
-  { slug: "sheila-shepherd", name: "The Sheila Shepherd School", industry: "Wellness", services: "Brand experience / Web design", description: "An expressive digital home for a specialist reflexology school.", image: "/images/portfolio/sheila-shepherd.png", layout: "split-reverse" },
+  { slug: "truck-bracket", name: "Truck Bracket", industry: "E-commerce", services: "Web design / Development / SEO", description: "A clearer product journey for a specialist automotive parts business.", image: "/images/portfolio/truck-bracket.png", layout: "split-reverse" },
   { slug: "rjh-construction", name: "RJH Construction", industry: "Construction", services: "Web design / Lead generation", description: "A confident online presence built to turn capability into enquiries.", image: "/images/portfolio/rjh-construction.png", layout: "feature" },
 ]
 

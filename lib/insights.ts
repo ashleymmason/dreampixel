@@ -68,6 +68,25 @@ export const insights: Insight[] = [
     ],
     related: ["why-good-web-design-starts-before-the-design", "seo-is-not-a-layer-you-add-later"],
   },
+  {
+    slug: "how-much-does-a-website-cost",
+    category: "Web Design",
+    title: "How much does a website cost?",
+    excerpt: "A useful way to think about website cost — and the questions that matter more than a headline price.",
+    date: "29 September 2026",
+    isoDate: "2026-09-29",
+    readTime: "7 min read",
+    image: "/images/responsive-showcase.png",
+    alt: "Responsive website layouts displayed across devices",
+    intro: "There is no honest one-size-fits-all price for a useful website. The cost follows the decisions the project needs to make and the work required to make them well.",
+    sections: [
+      { heading: "Scope changes the shape of the project", paragraphs: ["A small brochure site, a growing service business and an e-commerce catalogue have different needs. The number of pages, templates, products and user journeys all affect the work involved.", "The useful question is not simply how many pages you need. It is what each part of the website needs to help someone understand or do."] },
+      { heading: "The main factors that influence cost", paragraphs: ["Website cost can be shaped by strategy and discovery, bespoke design, development functionality, content, integrations, e-commerce requirements, SEO and ongoing support. A project that needs a content model, booking system or product catalogue will need a different plan from a simple marketing site."], bullets: ["The number and complexity of pages", "Design and interaction requirements", "Functionality, integrations or e-commerce", "Content creation and migration", "SEO foundations and ongoing improvement"] },
+      { heading: "Ask what is included", paragraphs: ["A useful proposal should make the work visible: what is being designed, what is being built, what content is needed, how revisions work and what happens after launch. Clarity at the start makes it easier to compare approaches and avoid surprises later."] },
+      { heading: "Start with the problem", paragraphs: ["The best starting point is a conversation about the business, the audience and the change the website needs to create. From there, the right scope can be shaped around the opportunity rather than a fixed package."] },
+    ],
+    related: ["why-good-web-design-starts-before-the-design", "the-website-redesign-question"],
+  },
 ]
 
 export const categories = ["All", "Web Design", "SEO"] as const

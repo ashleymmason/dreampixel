@@ -21,7 +21,6 @@ const values = [
 const projects = [
   { name: "RCS Tuning", type: "Strategy / Web design / Development", image: "/images/portfolio/rcs-tuning.png", href: "/work/rcs-tuning" },
   { name: "Withymead Cottage", type: "Brand-led digital experience", image: "/images/portfolio/withymead-cottage.png", href: "/work/withymead-cottage" },
-  { name: "Sheila Shepherd", type: "Web design / Development", image: "/images/portfolio/sheila-shepherd.png", href: "/work/sheila-shepherd" },
 ]
 
 export const metadata = {
