@@ -1,4 +1,5 @@
 import Link from "next/link"
+
 import { ArrowUpRight, Check, Mail, MapPin } from "lucide-react"
 import ContactForm from "@/components/contact-form"
 
@@ -11,7 +12,8 @@ const steps = [
 
 export const metadata = {
   title: "Start a Project | Dream Pixel",
-  description: "Tell Dream Pixel what you are working on and start a conversation about a better digital experience.",
+  description: "Tell us what you are working on and start a conversation about a better digital experience.",
+  alternates: { canonical: "/contact" },
 }
 
 export default function ContactPage() {

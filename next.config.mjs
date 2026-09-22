@@ -61,7 +61,7 @@ const nextConfig = {
       },
       {
         source: '/services/website-hosting',
-        destination: '/services/hosting',
+        destination: '/services/website-maintenance',
         permanent: true,
       },
       {

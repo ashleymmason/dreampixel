@@ -1,6 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Selected work and case studies",
+  description: "Explore websites and digital experiences created by Dream Pixel for businesses across Devon and beyond.",
+  alternates: { canonical: "/portfolio" },
+}
+
 
 const projects = [
   { slug: "rcs-tuning", name: "RCS Tuning", industry: "Automotive", services: "Web design / E-commerce / SEO", description: "A sharper digital garage for a performance-led tuning business.", image: "/images/portfolio/rcs-tuning.png", layout: "feature" },

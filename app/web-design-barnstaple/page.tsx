@@ -55,20 +55,6 @@ export const metadata = {
       image: "https://dreampixel.co.uk/images/dream-pixel-logo-white.png",
       url: "https://dreampixel.co.uk/web-design-barnstaple",
       "@id": "https://dreampixel.co.uk/web-design-barnstaple",
-      telephone: "01271 123456",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "North Devon",
-        addressLocality: "Barnstaple",
-        addressRegion: "Devon",
-        postalCode: "EX31",
-        addressCountry: "GB",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 51.0797,
-        longitude: -4.0617,
-      },
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -80,8 +66,6 @@ export const metadata = {
         "https://twitter.com/dreampixelweb",
         "https://www.instagram.com/dreampixelwebdesign",
       ],
-      priceRange: "££",
-      servesCuisine: ["Web Design", "SEO", "Digital Marketing"],
       areaServed: {
         "@type": "City",
         name: "Barnstaple",

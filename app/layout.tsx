@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -79,8 +79,13 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon.ico" }],
   },
   manifest: "/site.webmanifest",
+  generator: "v0.app",
+}
+
+export const viewport: Viewport = {
   themeColor: "#0a0a0a",
-    generator: 'v0.app'
+  width: "device-width",
+  initialScale: 1,
 }
 
 export default function RootLayout({

@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { insights, categories } from "@/lib/insights"
 
-export const metadata = { title: "Insights", description: "Practical ideas, opinions and useful guides from Dream Pixel on web design, SEO and growing better online." }
+export const metadata = { title: "Insights on web design, development and SEO", description: "Practical thinking from Dream Pixel on building clearer websites and stronger digital foundations.", alternates: { canonical: "/insights" } }
 
 function Meta({ item }: { item: (typeof insights)[number] }) { return <p className="eyebrow text-muted-foreground">{item.category} <span aria-hidden="true">/</span> {item.date} <span aria-hidden="true">/</span> {item.readTime}</p> }
 
