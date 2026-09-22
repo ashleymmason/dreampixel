@@ -3,16 +3,16 @@ import Link from "next/link"
 import { ArrowUpRight, Check, MoveRight, Sparkles } from "lucide-react"
 
 const projects = [
-  { name: "RCS Tuning", industry: "Automotive", service: "E-commerce · Performance", description: "A sharper digital home for a specialist tuning business ready to move faster.", image: "/images/portfolio/rcs-tuning.png", href: "https://rcs-tuning.co.uk/", tone: "bg-[hsl(var(--primary))]" },
-  { name: "Withymead Cottage", industry: "Hospitality", service: "Booking · Web design", description: "A calm, characterful booking experience rooted in the landscape it represents.", image: "/images/portfolio/withymead-cottage.png", href: "https://exmoorcottagewithypool.com/", tone: "bg-[hsl(var(--accent))]" },
-  { name: "RJH Construction", industry: "Construction", service: "Lead generation · Strategy", description: "Clearer services, stronger trust and a site built to turn attention into enquiries.", image: "/images/portfolio/rjh-construction.png", href: "https://rjhconstruction.co.uk/", tone: "bg-[hsl(var(--foreground))]" },
-  { name: "The Sheila Shepherd School", industry: "Wellbeing", service: "Brand · Experience", description: "A warm, confident digital identity for a school built around care and expertise.", image: "/images/portfolio/sheila-shepherd.png", href: "/portfolio", tone: "bg-[hsl(var(--primary))]" },
+  { name: "RCS Tuning", industry: "Automotive", service: "E-commerce · Performance", description: "A sharper digital home for a specialist tuning business ready to move faster.", image: "/images/portfolio/rcs-tuning.png", href: "/work/rcs-tuning", tone: "bg-[hsl(var(--primary))]" },
+  { name: "Withymead Cottage", industry: "Hospitality", service: "Booking · Web design", description: "A calm, characterful booking experience rooted in the landscape it represents.", image: "/images/portfolio/withymead-cottage.png", href: "/work/withymead-cottage", tone: "bg-[hsl(var(--accent))]" },
+  { name: "RJH Construction", industry: "Construction", service: "Lead generation · Strategy", description: "Clearer services, stronger trust and a site built to turn attention into enquiries.", image: "/images/portfolio/rjh-construction.png", href: "/work/rjh-construction", tone: "bg-[hsl(var(--foreground))]" },
+  { name: "The Sheila Shepherd School", industry: "Wellbeing", service: "Brand · Experience", description: "A warm, confident digital identity for a school built around care and expertise.", image: "/images/portfolio/sheila-shepherd.png", href: "/work/sheila-shepherd", tone: "bg-[hsl(var(--primary))]" },
 ]
 
 const services = [
   { title: "Websites", intro: "The centre of your digital world.", items: ["Web design", "UX/UI", "Development", "E-commerce", "Website redesign"], href: "/services/web-design" },
   { title: "Growth", intro: "More of the right people finding you.", items: ["SEO", "Local SEO", "Content", "Digital PR", "Conversion optimisation"], href: "/services/seo" },
-  { title: "Ongoing", intro: "A better site, month after month.", items: ["Hosting", "Maintenance", "Technical support", "Continuous optimisation"], href: "/services/hosting" },
+  { title: "Ongoing", intro: "A better site, month after month.", items: ["Hosting", "Maintenance", "Technical support", "Continuous optimisation"], href: "/services/website-maintenance" },
 ]
 
 const process = [
@@ -38,9 +38,9 @@ export default function Home() {
         <div className="container flex min-h-[calc(100svh-5rem)] flex-col justify-between pb-10 pt-12 md:pt-20">
           <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-foreground/60"><span>Independent digital studio</span><span>Devon / UK</span></div>
           <div className="relative py-20">
-            <p className="mb-8 max-w-sm text-sm leading-6 text-foreground/65">Dream Pixel creates high-performance websites and digital experiences for ambitious businesses across Devon and beyond.</p>
+            <p className="mb-8 max-w-sm text-sm leading-6 text-foreground/65">Dream Pixel designs and builds high-performance websites that help ambitious businesses explain their value, earn trust and get found.</p>
             <h1 className="max-w-6xl font-display text-[clamp(3.5rem,9.6vw,10rem)] font-medium leading-[0.83] tracking-[-0.08em] text-balance">Websites built to be <span className="text-[hsl(var(--primary))]">seen,</span><br />remembered <span className="text-[hsl(var(--accent))]">and found.</span></h1>
-            <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center"><Link href="/contact" className="inline-flex items-center gap-3 bg-[hsl(var(--primary))] px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-1">Start a project <ArrowUpRight aria-hidden="true" /></Link><Link href="#work" className="inline-flex items-center gap-3 text-sm font-semibold text-foreground/75 transition-colors hover:text-[hsl(var(--accent))]">View our work <MoveRight aria-hidden="true" /></Link></div>
+            <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center"><Link href="/contact" className="inline-flex items-center gap-3 bg-[hsl(var(--primary))] px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-1">Start a project <ArrowUpRight aria-hidden="true" /></Link><Link href="/portfolio" className="inline-flex items-center gap-3 text-sm font-semibold text-foreground/75 transition-colors hover:text-[hsl(var(--accent))]">View our work <MoveRight aria-hidden="true" /></Link></div>
           </div>
           <div className="flex items-end justify-between border-t border-background/20 pt-4 text-xs uppercase tracking-[0.18em] text-foreground/50"><span>Design · Development · Growth</span><span>Scroll to explore</span></div>
           <div className="pointer-events-none absolute bottom-28 right-[10%] hidden size-44 rounded-full border border-[hsl(var(--accent))]/60 md:block" /><div className="pointer-events-none absolute bottom-36 right-[13%] hidden size-8 rounded-full bg-[hsl(var(--accent))] md:block" />

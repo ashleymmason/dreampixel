@@ -53,7 +53,7 @@ export default function ContactPage() {
                 A good project starts with a good conversation.
               </h2>
               <p className="mt-7 max-w-sm leading-7 text-muted-foreground">
-                Share the shape of the challenge. We&apos;ll bring the questions, experience and a clear next step.
+                Share the shape of the challenge. We&apos;ll bring the questions, experience and a clear next step — whether that is a project, a useful recommendation or a conversation about fit.
               </p>
             </div>
 
