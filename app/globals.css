@@ -82,6 +82,31 @@
 @keyframes pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
 .animate-pulse { animation: pulse 3s ease-in-out infinite; }
 
+.founder-visual { isolation: isolate; border: 1px solid hsl(var(--border)); }
+.founder-visual-grid { position: absolute; inset: 0; background-image: linear-gradient(hsl(var(--foreground) / .08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / .08) 1px, transparent 1px); background-size: 2rem 2rem; mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent); }
+.founder-visual-orbit { position: absolute; border: 1px solid hsl(var(--primary) / .42); border-radius: 999px; transform: rotate(-24deg); }
+.founder-visual-orbit-one { width: 125%; height: 62%; left: -13%; top: 18%; animation: founder-orbit-one 9s ease-in-out infinite; }
+.founder-visual-orbit-two { width: 96%; height: 82%; left: 5%; top: 7%; border-color: hsl(var(--accent) / .5); transform: rotate(34deg); animation: founder-orbit-two 12s ease-in-out infinite; }
+.founder-visual-panel { position: absolute; left: 13%; top: 17%; width: 62%; height: 62%; border: 1px solid hsl(var(--foreground) / .28); background: hsl(var(--background) / .92); box-shadow: .8rem .8rem 0 hsl(var(--primary) / .2); animation: founder-panel 7s ease-in-out infinite; }
+.founder-visual-panel-bar { display: flex; gap: .35rem; padding: .7rem; border-bottom: 1px solid hsl(var(--foreground) / .16); }
+.founder-visual-panel-bar span { width: .35rem; height: .35rem; border-radius: 999px; background: hsl(var(--muted-foreground)); }
+.founder-visual-panel-copy { display: flex; flex-direction: column; gap: .7rem; padding: 13% 10%; }
+.founder-visual-kicker { color: hsl(var(--accent)); font-family: var(--font-inter), sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.founder-visual-line { display: block; height: .55rem; background: hsl(var(--foreground) / .82); }
+.founder-visual-line-wide { width: 82%; }
+.founder-visual-line-short { width: 48%; background: hsl(var(--primary)); }
+.founder-visual-panel-footer { position: absolute; right: 10%; bottom: 9%; left: 10%; display: flex; justify-content: space-between; color: hsl(var(--muted-foreground)); font-family: var(--font-inter), sans-serif; font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; }
+.founder-visual-card { position: absolute; display: flex; align-items: center; gap: .5rem; padding: .65rem .75rem; border: 1px solid hsl(var(--foreground) / .24); background: hsl(var(--background) / .94); color: hsl(var(--foreground)); font-family: var(--font-inter), sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.founder-visual-card-dot { width: .45rem; height: .45rem; border-radius: 999px; background: hsl(var(--accent)); }
+.founder-visual-card-found { right: 8%; top: 16%; animation: founder-card-found 7s ease-in-out infinite; }
+.founder-visual-card-remembered { right: 10%; bottom: 16%; animation: founder-card-remembered 8s ease-in-out infinite; }
+.founder-visual-caption { position: absolute; right: 8%; bottom: 7%; color: hsl(var(--muted-foreground)); font-family: var(--font-inter), sans-serif; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; }
+@keyframes founder-panel { 0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); } 50% { transform: translate3d(1.2rem, -.7rem, 0) rotate(1deg); } }
+@keyframes founder-orbit-one { 0%, 100% { transform: rotate(-24deg) scale(1); } 50% { transform: rotate(-18deg) scale(1.04); } }
+@keyframes founder-orbit-two { 0%, 100% { transform: rotate(34deg); } 50% { transform: rotate(28deg); } }
+@keyframes founder-card-found { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-.65rem); } }
+@keyframes founder-card-remembered { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(.6rem); } }
+
 /* Legacy page surfaces inherit the homepage studio system. */
 /* Keep the purple-to-green gradients used by legacy CTA and hero surfaces. */
 [class*="bg-white"], [class*="bg-gray-"] { background-color: hsl(var(--background)) !important; }
