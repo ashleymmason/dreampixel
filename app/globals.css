@@ -43,10 +43,19 @@
   .nav-link:hover, .nav-link[aria-current='page'] { color: hsl(var(--foreground)); }
   .nav-link:hover::after, .nav-link[aria-current='page']::after { transform: scaleX(1); transform-origin: left; }
   .button-primary, .button-secondary { align-items: center; display: inline-flex; gap: .8rem; justify-content: center; min-height: 3.1rem; padding: .8rem 1.15rem; font-size: .68rem; font-weight: 700; letter-spacing: .14em; line-height: 1.2; text-transform: uppercase; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease; }
+  .button-primary.hidden { display: none; }
   .button-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
   .button-primary:hover { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); transform: translateY(-2px); }
-  .button-secondary { border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); }
-  .button-secondary:hover { border-color: hsl(var(--primary)); color: hsl(var(--primary)); transform: translateY(-2px); }
+  .button-primary:focus-visible { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .button-primary:disabled, .button-primary[aria-disabled='true'] { background: hsl(var(--muted)); color: hsl(var(--muted-foreground)); transform: none; }
+  .button-secondary { border: 1px solid hsl(var(--border)); background: transparent; color: hsl(var(--foreground)); }
+  .button-secondary:hover { border-color: hsl(var(--primary)); background: hsl(var(--primary) / .1); color: hsl(var(--foreground)); transform: translateY(-2px); }
+  .button-secondary:focus-visible { background: hsl(var(--primary) / .1); color: hsl(var(--foreground)); }
+  .button-secondary:disabled, .button-secondary[aria-disabled='true'] { border-color: hsl(var(--border)); color: hsl(var(--muted-foreground)); transform: none; }
+  button[type='submit'] { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  button[type='submit']:hover { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); }
+  button[type='submit']:focus-visible { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  button[type='submit']:disabled, button[type='submit'][aria-disabled='true'] { background: hsl(var(--muted)); color: hsl(var(--muted-foreground)); }
   .link-arrow { align-items: center; display: inline-flex; gap: .55rem; transition: color 180ms ease, gap 180ms ease; }
   .link-arrow:hover { color: hsl(var(--primary)); gap: .8rem; }
   .link-arrow svg, .footer-link svg { height: 1rem; width: 1rem; }
@@ -78,10 +87,10 @@
 [class*="bg-white"], [class*="bg-gray-"] { background-color: hsl(var(--background)) !important; }
 [class*="text-black"], [class*="text-gray-700"], [class*="text-gray-800"], [class*="text-gray-900"] { color: hsl(var(--foreground)) !important; }
 [class*="text-gray-500"], [class*="text-gray-600"], [class*="text-gray-400"] { color: hsl(var(--muted-foreground)) !important; }
-[class*="text-purple-"] { color: hsl(var(--primary)) !important; }
-[class*="text-green-"], [class*="text-emerald-"] { color: hsl(var(--accent)) !important; }
-[class*="bg-purple-"] { background-color: hsl(var(--primary) / 0.12) !important; color: hsl(var(--primary)) !important; }
-[class*="bg-green-"] { background-color: hsl(var(--accent) / 0.14) !important; color: hsl(var(--foreground)) !important; }
+  [class*="text-purple-"]:not(button):not(a), [class*="text-purple-"] > :not(button):not(a) { color: hsl(var(--primary)) !important; }
+  [class*="text-green-"]:not(button):not(a), [class*="text-emerald-"]:not(button):not(a), [class*="text-green-"] > :not(button):not(a), [class*="text-emerald-"] > :not(button):not(a) { color: hsl(var(--accent)) !important; }
+  [class*="bg-purple-"]:not(button):not(a) { background-color: hsl(var(--primary) / 0.12) !important; color: hsl(var(--primary)) !important; }
+  [class*="bg-green-"]:not(button):not(a) { background-color: hsl(var(--accent) / 0.14) !important; color: hsl(var(--foreground)) !important; }
 [class*="border-purple-"] { border-color: hsl(var(--primary) / 0.35) !important; }
 [class*="border-green-"] { border-color: hsl(var(--accent) / 0.35) !important; }
 
