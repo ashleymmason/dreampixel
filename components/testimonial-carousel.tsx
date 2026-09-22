@@ -30,7 +30,7 @@ const testimonials = [
     name: "Sheila Shepherd",
     role: "The Sheila Shepherd School of Reflexology",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Sheila%20Shepherd%20School%20of%20Reflexology-hgJLidFDzIyZFcZWA6WJUVvhZVhZ2Q.png",
+      "/placeholder-user.jpg",
     content:
       "I cannot recommend Dream Pixel enough. They created my website The Sheila Shepherd School of Reflexology within a tight deadline, working very closely with me to get it how I had visualised it. They are continuing to work with me. Their kindness and patience are really appreciated. Thank you so much.",
   },
@@ -41,7 +41,7 @@ export default function TestimonialCarousel() {
   const [autoplay, setAutoplay] = useState(true)
 
   const next = () => {
-    setCurrent((current + 1) % testimonials.length)
+    setCurrent((value) => (value + 1) % testimonials.length)
   }
 
   const prev = () => {
@@ -56,7 +56,7 @@ export default function TestimonialCarousel() {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [current, autoplay])
+  }, [autoplay])
 
   return (
     <div className="relative">

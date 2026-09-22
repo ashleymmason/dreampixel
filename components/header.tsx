@@ -1,215 +1,77 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
+import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import Link from "next/link"
+import { ArrowUpRight, ChevronDown, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const locations = [
-  { name: "Barnstaple", href: "/web-design-barnstaple" },
-  { name: "Bideford", href: "/web-design-bideford" },
-  { name: "Exeter", href: "/web-design-exeter" },
-  { name: "Plymouth", href: "/web-design-plymouth" },
-  { name: "Torquay", href: "/web-design-torquay" },
-]
+const primaryLinks = [
+  ["Work", "/portfolio"],
+  ["About", "/about"],
+  ["Insights", "/insights"],
+] as const
 
-const services = [
-  { name: "Web Design", href: "/services/web-design" },
-  { name: "SEO", href: "/services/seo" },
-  { name: "PPC", href: "/services/ppc" },
-  { name: "Content Creation", href: "/services/content" },
-  { name: "Backlink Building", href: "/services/backlinks" },
-  { name: "UX/UI Design", href: "/services/ux-ui" },
-]
+const serviceGroups = [
+  { label: "Websites", items: [["Web Design", "/services/web-design"], ["Web Development", "/services/website-development"], ["E-commerce", "/services/ecommerce"], ["Website Redesign", "/services/website-redesign"], ["UX / UI", "/services/web-design"]] },
+  { label: "Growth", items: [["SEO", "/services/seo"], ["Local SEO", "/services/local-seo"], ["Technical SEO", "/services/technical-seo"], ["Content", "/services/content"], ["Digital PR", "/services/digital-pr"]] },
+  { label: "Ongoing", items: [["Maintenance", "/services/website-maintenance"], ["Hosting", "/services/hosting"], ["Ongoing SEO", "/services/seo"], ["Optimisation", "/services/technical-seo"]] },
+] as const
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : ""
+    return () => { document.body.style.overflow = "" }
+  }, [open])
+
+  const closeMenu = () => { setOpen(false); setServicesOpen(false) }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/dream-pixel-logo.png"
-            alt="Dream Pixel Logo"
-            width={150}
-            height={40}
-            className="h-10 w-auto"
-            priority
-          />
+    <header className={cn("sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl transition-[box-shadow,background-color] duration-300", scrolled && "bg-background/95 shadow-[0_12px_40px_hsl(var(--background)/.35)]")}>
+      <div className="container flex h-[4.5rem] items-center justify-between transition-[height] duration-300 md:h-20" data-scrolled={scrolled}>
+        <Link href="/" className="shrink-0" onClick={closeMenu} aria-label="Dream Pixel home">
+          <Image src="/images/dream-pixel-logo-white.png" alt="Dream Pixel" width={1549} height={298} className="h-auto w-32 md:w-40" priority />
         </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center">
-          <div className="bg-gray-100/80 backdrop-blur-sm rounded-full px-2 py-2 flex items-center space-x-1">
-            <Link
-              href="/"
-              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary"
-            >
-              <span className="relative z-10">Home</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
-            </Link>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary">
-                  <span className="relative z-10">Services</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                {services.map((service) => (
-                  <DropdownMenuItem key={service.name} asChild>
-                    <Link href={service.href}>{service.name}</Link>
-                  </DropdownMenuItem>
-                ))}
-                {/* <DropdownMenuItem asChild>
-                  <Link href="/services/hosting">Hosting</Link>
-                </DropdownMenuItem> */}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary">
-                  <span className="relative z-10">Locations</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                {locations.map((location) => (
-                  <DropdownMenuItem key={location.name} asChild>
-                    <Link href={location.href}>{location.name}</Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <Link
-              href="/portfolio"
-              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary"
-            >
-              <span className="relative z-10">Portfolio</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
-            </Link>
-
-            <Link
-              href="/about"
-              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary"
-            >
-              <span className="relative z-10">About</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
-            </Link>
-
-            <Link
-              href="/services/hosting"
-              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary"
-            >
-              <span className="relative z-10">Hosting</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
-            </Link>
-
-            <Link
-              href="/contact"
-              className="relative px-4 py-2 text-sm font-medium transition-colors rounded-full hover:text-primary"
-            >
-              <span className="relative z-10">Contact</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-green-500/90 rounded-full opacity-0 hover:opacity-10 transition-opacity"></span>
-            </Link>
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
+          <Link href="/portfolio" className="nav-link">Work</Link>
+          <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+            <button type="button" className="nav-link inline-flex items-center gap-1" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>
+              Services <ChevronDown className={cn("size-3 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" />
+            </button>
+            <div className={cn("absolute right-0 top-full mt-5 w-[42rem] border border-border bg-card p-6 shadow-2xl transition-all duration-200", servicesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0")}>
+              <div className="grid grid-cols-3 gap-6">
+                {serviceGroups.map((group) => <div key={group.label}><p className="eyebrow mb-4 text-primary">{group.label}</p><div className="flex flex-col gap-3">{group.items.map(([label, href]) => <Link key={label} href={href} className="text-sm text-muted-foreground transition-colors hover:text-foreground" onClick={closeMenu}>{label}</Link>)}</div></div>)}
+              </div>
+              <Link href="/services" className="link-arrow mt-7 inline-flex border-t border-border pt-4 text-sm font-semibold" onClick={closeMenu}>View all services <ArrowUpRight aria-hidden="true" /></Link>
+            </div>
           </div>
+          {primaryLinks.slice(1).map(([label, href]) => <Link key={label} href={href} className="nav-link">{label}</Link>)}
         </nav>
-
-        <div className="hidden md:block">
-          <Button
-            asChild
-            className="bg-gradient-to-r from-purple-600 to-green-500 hover:from-purple-700 hover:to-green-600"
-          >
-            <Link href="/contact">Get a Quote</Link>
-          </Button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button type="button" className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          <span className="sr-only">Toggle menu</span>
-        </button>
+        <Link href="/contact" className="button-primary hidden md:inline-flex" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
+        <button type="button" className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary md:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <span className="flex flex-col gap-1.5" aria-hidden="true"><span className="block h-px w-5 bg-current" /><span className="block h-px w-5 bg-current" /></span>}</button>
       </div>
-
-      {/* Mobile Navigation */}
-      <div
-        className={cn(
-          "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in md:hidden bg-background",
-          mobileMenuOpen ? "slide-in-from-bottom-80" : "hidden",
-        )}
-      >
-        <div className="relative z-20 grid gap-6 rounded-md p-4">
-          <Link href="/" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
-            <span className="font-medium">Home</span>
-          </Link>
-          <div className="grid gap-3">
-            <div className="font-medium">Services</div>
-            <div className="grid grid-cols-1 gap-3 pl-4">
-              {services.map((service) => (
-                <Link
-                  key={service.name}
-                  href={service.href}
-                  className="text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {service.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="grid gap-3">
-            <Link href="/locations" className="font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Locations
-            </Link>
-            <div className="grid grid-cols-1 gap-3 pl-4">
-              {locations.map((location) => (
-                <Link
-                  key={location.name}
-                  href={location.href}
-                  className="text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {location.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <Link href="/portfolio" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
-            <span className="font-medium">Portfolio</span>
-          </Link>
-          <Link href="/about" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
-            <span className="font-medium">About</span>
-          </Link>
-          <Link
-            href="/services/hosting"
-            className="flex items-center space-x-2"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <span className="font-medium">Hosting</span>
-          </Link>
-          <Link href="/contact" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
-            <span className="font-medium">Contact</span>
-          </Link>
-          <Button
-            asChild
-            className="bg-gradient-to-r from-purple-600 to-green-500 hover:from-purple-700 hover:to-green-600"
-          >
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-              Get a Quote
-            </Link>
-          </Button>
-        </div>
+      <div id="mobile-navigation" className={cn("fixed inset-0 top-[4.5rem] overflow-y-auto bg-background px-6 pb-10 pt-10 transition-[opacity,visibility] duration-300 md:hidden", open ? "visible opacity-100" : "invisible opacity-0")}>
+        <nav className="flex flex-col gap-7" aria-label="Mobile navigation">
+          <Link href="/portfolio" className="font-display text-5xl tracking-[-0.06em]" onClick={closeMenu}>Work</Link>
+          <div className="border-y border-border py-6"><button type="button" className="flex w-full items-center justify-between font-display text-5xl tracking-[-0.06em]" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>Services <ChevronDown className={cn("size-6 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" /></button>{servicesOpen && <div className="mt-6 grid gap-6 pl-1"><p className="eyebrow text-primary">Websites · Growth · Ongoing</p><div className="grid gap-4">{serviceGroups.flatMap((group) => group.items).map(([label, href]) => <Link key={label} href={href} className="text-lg text-muted-foreground" onClick={closeMenu}>{label}</Link>)}</div><Link href="/services" className="link-arrow text-sm font-semibold" onClick={closeMenu}>View all services <ArrowUpRight aria-hidden="true" /></Link></div>}</div>
+          <Link href="/about" className="font-display text-5xl tracking-[-0.06em]" onClick={closeMenu}>About</Link>
+          <Link href="/insights" className="font-display text-5xl tracking-[-0.06em]" onClick={closeMenu}>Insights</Link>
+          <Link href="/contact" className="button-primary mt-5 w-full justify-between" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
+        </nav>
       </div>
     </header>
   )
 }
 
-// Keep the default export for backward compatibility
 export default Header

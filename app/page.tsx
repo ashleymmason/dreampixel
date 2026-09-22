@@ -1,310 +1,70 @@
-import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, ArrowRight, Monitor, Search, Zap, Users, BarChart, Code } from "lucide-react"
-import TestimonialCarousel from "@/components/testimonial-carousel"
-import GrowthAnimation from "@/components/growth-animation"
-import AnalyticsDebugger from "@/components/analytics-debugger"
+import Link from "next/link"
+import { FounderVisual } from "@/components/founder-visual"
+import { ArrowUpRight, Check, MoveRight, Sparkles } from "lucide-react"
+
+const projects = [
+  { name: "RCS Tuning", industry: "Automotive", service: "E-commerce · Performance", description: "A sharper digital home for a specialist tuning business ready to move faster.", image: "/images/portfolio/rcs-tuning.png", href: "/work/rcs-tuning", tone: "bg-[hsl(var(--primary))]" },
+  { name: "Withymead Cottage", industry: "Hospitality", service: "Booking · Web design", description: "A calm, characterful booking experience rooted in the landscape it represents.", image: "/images/portfolio/withymead-cottage.png", href: "/work/withymead-cottage", tone: "bg-[hsl(var(--accent))]" },
+  { name: "RJH Construction", industry: "Construction", service: "Lead generation · Strategy", description: "Clearer services, stronger trust and a site built to turn attention into enquiries.", image: "/images/portfolio/rjh-construction.png", href: "/work/rjh-construction", tone: "bg-[hsl(var(--foreground))]" },
+  { name: "Truck Bracket", industry: "E-commerce", service: "Web design · Development · SEO", description: "A clearer product journey for a specialist automotive parts business.", image: "/images/portfolio/truck-bracket.png", href: "/work/truck-bracket", tone: "bg-[hsl(var(--accent))]" },
+]
+
+const services = [
+  { title: "Websites", intro: "The centre of your digital world.", items: ["Web design", "UX/UI", "Development", "E-commerce", "Website redesign"], href: "/services/web-design" },
+  { title: "Growth", intro: "More of the right people finding you.", items: ["SEO", "Local SEO", "Content", "Digital PR", "Conversion optimisation"], href: "/services/seo" },
+  { title: "Ongoing", intro: "A better site, month after month.", items: ["Hosting", "Maintenance", "Technical support", "Continuous optimisation"], href: "/services/website-maintenance" },
+]
+
+const process = [
+  ["01", "Discover", "We listen, ask the useful questions and find the opportunity."],
+  ["02", "Strategy", "A clear plan for what to say, build and measure."],
+  ["03", "Design & Build", "Thoughtful design and dependable technology, working as one."],
+  ["04", "Launch & Grow", "We launch with confidence, then keep improving what matters."],
+]
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://dreampixel.co.uk/#organization", name: "Dream Pixel", url: "https://dreampixel.co.uk", logo: "https://dreampixel.co.uk/images/dream-pixel-logo-white.png", email: "hello@dreampixel.co.uk", address: { "@type": "PostalAddress", addressLocality: "Barnstaple", addressRegion: "Devon", addressCountry: "GB" } },
+    { "@type": "WebSite", "@id": "https://dreampixel.co.uk/#website", url: "https://dreampixel.co.uk", name: "Dream Pixel", publisher: { "@id": "https://dreampixel.co.uk/#organization" } },
+  ],
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-white/95"></div>
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                Turning{" "}
-                <span className="bg-gradient-to-r from-purple-600 to-green-500 bg-clip-text text-transparent">
-                  dreams
-                </span>{" "}
-                into digital reality
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                We create beautiful, functional websites that help your business stand out in the digital landscape.
-                Based in Barnstaple, serving all of Devon and beyond.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-green-500 hover:from-purple-700 hover:to-green-600"
-                >
-                  <Link href="/contact">Get a Free Quote</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/portfolio">View Our Work</Link>
-                </Button>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle className="h-4 w-4 text-green-500" />
-                <span>No obligation consultation</span>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-100 to-green-100 rounded-full blur-3xl opacity-30"></div>
-              <Image
-                src="/images/responsive-showcase.png"
-                alt="Responsive website designs on multiple devices"
-                width={600}
-                height={400}
-                className="relative z-10 rounded-lg shadow-xl"
-                priority
-              />
-            </div>
+    <div className="overflow-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <section className="relative isolate bg-background text-foreground">
+        <div className="container flex min-h-[calc(100svh-5rem)] flex-col justify-between pb-10 pt-12 md:pt-20">
+          <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-foreground/60"><span>Independent digital studio</span><span>Devon / UK</span></div>
+          <div className="relative py-20">
+            <p className="mb-8 max-w-sm text-sm leading-6 text-foreground/65">Dream Pixel designs and builds high-performance websites that help ambitious businesses explain their value, earn trust and get found.</p>
+            <h1 className="max-w-6xl font-display text-[clamp(3.5rem,9.6vw,10rem)] font-medium leading-[0.83] tracking-[-0.08em] text-balance">Dream Pixel builds websites that are <span className="text-[hsl(var(--primary))]">seen,</span><br />remembered <span className="text-[hsl(var(--accent))]">and found.</span></h1>
+            <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center"><Link href="/contact" className="inline-flex items-center gap-3 bg-[hsl(var(--primary))] px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-1">Start a project <ArrowUpRight aria-hidden="true" /></Link><Link href="/portfolio" className="inline-flex items-center gap-3 text-sm font-semibold text-foreground/75 transition-colors hover:text-[hsl(var(--accent))]">View our work <MoveRight aria-hidden="true" /></Link></div>
           </div>
+          <div className="flex items-end justify-between border-t border-background/20 pt-4 text-xs uppercase tracking-[0.18em] text-foreground/50"><span>Design · Development · Growth</span><span>Scroll to explore</span></div>
+          <div className="pointer-events-none absolute bottom-28 right-[10%] hidden size-44 rounded-full border border-[hsl(var(--accent))]/60 md:block" /><div className="pointer-events-none absolute bottom-36 right-[13%] hidden size-8 rounded-full bg-[hsl(var(--accent))] md:block" />
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-            <p className="text-xl text-muted-foreground">
-              Comprehensive digital solutions to help your business thrive online
-            </p>
-          </div>
+      <section className="border-b border-border bg-secondary py-5 text-secondary-foreground"><div className="container flex flex-col gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground md:flex-row md:items-center md:justify-between"><span>Trusted by businesses across Devon and beyond</span><span className="font-display text-base normal-case tracking-normal text-foreground">RCS Tuning · Truck Bracket · Withymead Cottage · RJH Construction</span></div></section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-purple-100">
-              <CardContent className="p-6">
-                <Monitor className="h-12 w-12 text-purple-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Web Design</h3>
-                <p className="text-muted-foreground mb-4">
-                  Beautiful, responsive websites that look great on all devices and help convert visitors into
-                  customers.
-                </p>
-                <Link
-                  href="/services/web-design"
-                  className="group inline-flex items-center text-purple-600 font-medium"
-                >
-                  Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </CardContent>
-            </Card>
+      <section id="work" className="container py-24 md:py-36"><div className="mb-16 flex flex-col gap-5 md:flex-row md:items-end md:justify-between"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">Selected work</p><h2 className="max-w-3xl font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-9xl">Ideas made<br /><span className="text-muted-foreground">visible.</span></h2></div><p className="max-w-xs text-sm leading-6 text-muted-foreground">A handful of recent projects for people building something worth finding.</p></div><div className="grid gap-16 md:grid-cols-2 md:gap-x-10 md:gap-y-28">{projects.map((project, index) => <article key={project.name} className={index % 2 === 1 ? "md:mt-28" : ""}><Link href={project.href} className="group block"><div className={`relative aspect-[4/3] overflow-hidden ${project.tone}`}><Image src={project.image} alt={`${project.name} website project`} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(min-width: 768px) 50vw, 100vw" /><div className="absolute inset-0 bg-foreground/10 transition group-hover:bg-transparent" /><span className="absolute bottom-5 right-5 bg-background px-3 py-2 text-xs uppercase tracking-[0.15em]">View case study <ArrowUpRight className="ml-2 inline size-3" aria-hidden="true" /></span></div><div className="mt-5 flex items-start justify-between gap-4"><div><p className="text-xs uppercase tracking-[0.18em] text-[hsl(var(--primary))]">{project.industry} · {project.service}</p><h3 className="mt-2 font-display text-3xl tracking-[-0.05em] md:text-4xl">{project.name}</h3><p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">{project.description}</p></div><ArrowUpRight className="mt-1 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" /></div></Link></article>)}</div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-green-100">
-              <CardContent className="p-6">
-                <Search className="h-12 w-12 text-green-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">SEO</h3>
-                <p className="text-muted-foreground mb-4">
-                  Improve your search engine rankings and drive more organic traffic to your website.
-                </p>
-                <Link href="/services/seo" className="group inline-flex items-center text-green-600 font-medium">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </CardContent>
-            </Card>
+      <section className="bg-[hsl(var(--primary))] py-24 text-primary-foreground md:py-36"><div className="container grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-end"><p className="text-sm uppercase tracking-[0.18em] text-primary-foreground/70">The Dream Pixel approach</p><div><h2 className="max-w-5xl font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Design that looks good. Technology that works. <span className="text-[hsl(var(--accent))]">SEO that gets you found.</span></h2><p className="mt-10 max-w-xl text-lg leading-7 text-primary-foreground/80">Design, development and search should not pull in different directions. We bring them together from the start, so your website is distinctive, useful and ready to perform.</p></div></div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-purple-100">
-              <CardContent className="p-6">
-                <Zap className="h-12 w-12 text-purple-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">PPC</h3>
-                <p className="text-muted-foreground mb-4">
-                  Targeted pay-per-click advertising campaigns that deliver immediate results and ROI.
-                </p>
-                <Link href="/services/ppc" className="group inline-flex items-center text-purple-600 font-medium">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </CardContent>
-            </Card>
+      <section className="container py-24 md:py-36"><div className="mb-14 flex items-end justify-between gap-6"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--accent))]">How we help</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">A better digital<br />foundation.</h2></div></div><div className="grid border-t border-border md:grid-cols-3">{services.map((group) => <Link key={group.title} href={group.href} className="group border-b border-border py-8 md:border-b-0 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"><div className="flex items-start justify-between"><h3 className="font-display text-4xl tracking-[-0.05em]">{group.title}</h3><MoveRight className="transition-transform group-hover:translate-x-2" aria-hidden="true" /></div><p className="mt-3 text-sm text-muted-foreground">{group.intro}</p><ul className="mt-8 flex flex-col gap-3 text-sm">{group.items.map((item) => <li key={item} className="flex items-center gap-2"><Check className="size-4 text-[hsl(var(--accent))]" aria-hidden="true" />{item}</li>)}</ul></Link>)}</div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-green-100">
-              <CardContent className="p-6">
-                <Users className="h-12 w-12 text-green-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">UX/UI Design</h3>
-                <p className="text-muted-foreground mb-4">
-                  User-centered design that creates intuitive, enjoyable experiences for your customers.
-                </p>
-                <Link href="/services/ux-ui" className="group inline-flex items-center text-green-600 font-medium">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </CardContent>
-            </Card>
+      <section className="bg-secondary py-24 text-secondary-foreground md:py-32"><div className="container grid gap-12 md:grid-cols-[0.7fr_1.3fr]"><div><p className="text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">No made-up numbers</p><h2 className="mt-5 font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Good work<br />speaks clearly.</h2></div><div className="border-t border-border"><div className="flex gap-5 border-b border-border py-6"><Sparkles className="mt-1 size-5 text-[hsl(var(--accent))]" aria-hidden="true" /><p className="max-w-xl text-lg leading-7">We believe in clear outcomes, honest conversations and websites that make a real difference to the people using them.</p></div><div className="grid gap-5 py-6 text-sm text-muted-foreground md:grid-cols-3"><span>Thoughtful launches</span><span>Better enquiries</span><span>Long-term partnerships</span></div></div></div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-purple-100">
-              <CardContent className="p-6">
-                <BarChart className="h-12 w-12 text-purple-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Content Creation</h3>
-                <p className="text-muted-foreground mb-4">
-                  Engaging, SEO-optimized content that resonates with your audience and drives engagement.
-                </p>
-                <Link href="/services/content" className="group inline-flex items-center text-purple-600 font-medium">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </CardContent>
-            </Card>
+      <section className="container py-24 md:py-36"><div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">A client perspective</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Made with<br />care.</h2></div><div><blockquote className="max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] md:text-6xl">“I cannot recommend Dream Pixel enough. They created my website within a tight deadline, working very closely with me to get it how I had visualised it.”</blockquote><p className="mt-8 text-sm uppercase tracking-[0.16em] text-muted-foreground">Sheila Shepherd · School of Reflexology</p></div></div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-green-100">
-              <CardContent className="p-6">
-                <Code className="h-12 w-12 text-green-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Backlink Building</h3>
-                <p className="text-muted-foreground mb-4">
-                  Strategic link building to improve your site's authority and search engine rankings.
-                </p>
-                <Link href="/services/backlinks" className="group inline-flex items-center text-green-600 font-medium">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <section className="bg-background py-24 text-foreground md:py-32"><div className="container"><div className="mb-14 flex items-end justify-between"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--accent))]">The process</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">From first thought<br />to <span className="text-[hsl(var(--primary))]">next chapter.</span></h2></div></div><div className="grid border-t border-background/20 md:grid-cols-4">{process.map(([number, title, description]) => <div key={number} className="border-b border-background/20 py-7 md:border-b-0 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0"><span className="font-mono text-xs text-foreground/50">{number}</span><h3 className="mt-8 font-display text-3xl">{title}</h3><p className="mt-4 text-sm leading-6 text-foreground/60">{description}</p></div>)}</div></div></section>
 
-      {/* Locations Section */}
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Serving All of Devon</h2>
-            <p className="text-xl text-muted-foreground">
-              Local web design and digital marketing services throughout Devon
-            </p>
-          </div>
+      <section className="container py-24 md:py-36"><div className="grid gap-12 md:grid-cols-[1fr_1fr] md:items-center"><FounderVisual /><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">About Dream Pixel</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Small studio.<br /><span className="text-muted-foreground">Big care.</span></h2><p className="mt-8 max-w-lg text-lg leading-7 text-muted-foreground">We are an independent digital studio in Barnstaple, Devon. Close enough to know the local landscape, ambitious enough to build for anywhere.</p><Link href="/about" className="mt-8 inline-flex items-center gap-3 border-b border-foreground pb-3 text-sm font-semibold uppercase tracking-[0.16em] hover:text-[hsl(var(--primary))]">Meet Dream Pixel <ArrowUpRight aria-hidden="true" /></Link></div></div></section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/web-design-barnstaple" className="group">
-              <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                <Image
-                  src="/images/barnstaple-reflected-in-water.webp"
-                  alt="Barnstaple riverside with historic buildings reflected in water"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">Barnstaple</h3>
-                  <p className="text-white/80">Web Design Services</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/web-design-bideford" className="group">
-              <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                <Image
-                  src="/images/bideford-waterfront.png"
-                  alt="Bideford waterfront with historic buildings and bridge"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">Bideford</h3>
-                  <p className="text-white/80">Web Design Services</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/web-design-exeter" className="group">
-              <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                <Image
-                  src="/images/exeter-aerial-view.jpeg"
-                  alt="Aerial view of Exeter with River Exe and cityscape"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">Exeter</h3>
-                  <p className="text-white/80">Web Design Services</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/web-design-plymouth" className="group">
-              <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                <Image
-                  src="/images/plymouth-hoe-aerial.jpeg"
-                  alt="Aerial view of Plymouth Hoe with Smeaton's Tower lighthouse and coastline"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">Plymouth</h3>
-                  <p className="text-white/80">Web Design Services</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/web-design-torquay" className="group">
-              <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                <Image
-                  src="/images/torquay-harbor.jpeg"
-                  alt="Torquay harbor with boats and waterfront buildings"
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">Torquay</h3>
-                  <p className="text-white/80">Web Design Services</p>
-                </div>
-              </div>
-            </Link>
-
-            <div className="relative overflow-hidden rounded-lg aspect-[4/3] bg-gradient-to-br from-purple-500 to-green-500 flex items-center justify-center p-6">
-              <div className="text-center text-white">
-                <h3 className="text-xl font-bold mb-2">Serving All of Devon</h3>
-                <p className="mb-4">And surrounding areas</p>
-                <Button asChild variant="secondary">
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-muted-foreground">
-              Don't just take our word for it - hear from some of our satisfied clients
-            </p>
-          </div>
-
-          <TestimonialCarousel />
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-purple-50 to-green-50">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">Ready to transform your online presence?</h2>
-              <p className="text-xl text-muted-foreground">
-                Let's work together to create a website that truly represents your brand and helps you achieve your
-                business goals.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-green-500 hover:from-purple-700 hover:to-green-600"
-                >
-                  <Link href="/contact">Get Started Today</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/portfolio">View Our Work</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-100 to-green-100 rounded-full blur-3xl opacity-30"></div>
-              <GrowthAnimation />
-            </div>
-          </div>
-        </div>
-      </section>
-      <AnalyticsDebugger />
+      <section className="bg-[hsl(var(--accent))] px-6 py-24 text-foreground md:py-36"><div className="mx-auto max-w-7xl"><p className="mb-7 text-sm uppercase tracking-[0.18em]">Ready when you are</p><h2 className="max-w-5xl font-display text-7xl leading-[0.82] tracking-[-0.08em] md:text-[9rem]">Have a project<br />in mind?</h2><p className="mt-10 max-w-md text-lg leading-7">Tell us what you&apos;re building. We&apos;ll help you figure out what comes next.</p><Link href="/contact" className="mt-10 inline-flex items-center gap-3 bg-foreground px-5 py-3 text-sm font-semibold text-background transition-transform hover:-translate-y-1">Start a project <ArrowUpRight aria-hidden="true" /></Link></div></section>
     </div>
   )
 }

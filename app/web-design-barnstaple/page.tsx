@@ -52,23 +52,9 @@ export const metadata = {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       name: "Dream Pixel Web Design Barnstaple",
-      image: "https://dreampixel.co.uk/images/dream-pixel-logo.png",
+      image: "https://dreampixel.co.uk/images/dream-pixel-logo-white.png",
       url: "https://dreampixel.co.uk/web-design-barnstaple",
       "@id": "https://dreampixel.co.uk/web-design-barnstaple",
-      telephone: "01271 123456",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "North Devon",
-        addressLocality: "Barnstaple",
-        addressRegion: "Devon",
-        postalCode: "EX31",
-        addressCountry: "GB",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 51.0797,
-        longitude: -4.0617,
-      },
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -80,8 +66,6 @@ export const metadata = {
         "https://twitter.com/dreampixelweb",
         "https://www.instagram.com/dreampixelwebdesign",
       ],
-      priceRange: "££",
-      servesCuisine: ["Web Design", "SEO", "Digital Marketing"],
       areaServed: {
         "@type": "City",
         name: "Barnstaple",
@@ -124,7 +108,7 @@ export const metadata = {
           name: "How much does web design cost in Barnstaple?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Web design costs in Barnstaple typically range from £500 for a basic small business website to £5,000+ for larger e-commerce sites. At Dream Pixel, we offer flexible pricing packages tailored to your specific needs and budget, with affordable options for local Barnstaple businesses.",
+            text: "There is no fixed price for web design in Barnstaple. The right scope depends on the number and complexity of pages, design requirements, functionality, content, SEO and ongoing support.",
           },
         },
         {
@@ -281,7 +265,7 @@ export default function WebDesignBarnstaple() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-500" />
-                <span>Affordable Pricing</span>
+                <span>Project investment</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-500" />
@@ -524,15 +508,6 @@ export default function WebDesignBarnstaple() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
               <div className="flex items-center mb-4">
-                <div className="flex-shrink-0">
-                  <Image
-                    src="/images/portfolio/sheila-shepherd.png"
-                    alt="Sheila Shepherd, Owner of Sheila Shepherd School of Reflexology"
-                    width={50}
-                    height={50}
-                    className="rounded-full object-cover w-[50px] h-[50px]"
-                  />
-                </div>
                 <div className="ml-4">
                   <h3 className="font-semibold">Sheila Shepherd</h3>
                   <p className="text-sm text-muted-foreground">Sheila Shepherd School of Reflexology</p>

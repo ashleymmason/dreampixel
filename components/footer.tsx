@@ -1,146 +1,27 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Mail, MapPin } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
+
+const explore = [["Work", "/portfolio"], ["Services", "/services"], ["About", "/about"], ["Insights", "/insights"], ["Contact", "/contact"]]
+const services = [["Web Design", "/services/web-design"], ["Development", "/services/website-development"], ["E-commerce", "/services/ecommerce"], ["SEO", "/services/seo"], ["Local SEO", "/services/local-seo"], ["Maintenance", "/services/website-maintenance"]]
 
 export function Footer() {
-  return (
-    <footer className="bg-gradient-to-b from-white to-gray-100 border-t">
-      <div className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/images/dream-pixel-logo.png"
-                alt="Dream Pixel Logo"
-                width={180}
-                height={50}
-                className="h-12 w-auto"
-              />
-            </Link>
-            <p className="text-muted-foreground">
-              Creating beautiful, functional websites that drive results for your business in Devon and beyond.
-            </p>
-            <div className="flex space-x-4">
-              <Link
-                href="https://www.facebook.com/dreampixeluk"
-                className="text-muted-foreground hover:text-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link
-                href="https://www.instagram.com/dreampixeldesign/"
-                className="text-muted-foreground hover:text-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/services/web-design" className="text-muted-foreground hover:text-primary">
-                  Web Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/seo" className="text-muted-foreground hover:text-primary">
-                  SEO
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/ppc" className="text-muted-foreground hover:text-primary">
-                  PPC
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/content" className="text-muted-foreground hover:text-primary">
-                  Content Creation
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/backlinks" className="text-muted-foreground hover:text-primary">
-                  Backlink Building
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/ux-ui" className="text-muted-foreground hover:text-primary">
-                  UX/UI Design
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Locations</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/web-design-barnstaple" className="text-muted-foreground hover:text-primary">
-                  Barnstaple
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-bideford" className="text-muted-foreground hover:text-primary">
-                  Bideford
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-exeter" className="text-muted-foreground hover:text-primary">
-                  Exeter
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-plymouth" className="text-muted-foreground hover:text-primary">
-                  Plymouth
-                </Link>
-              </li>
-              <li>
-                <Link href="/web-design-torquay" className="text-muted-foreground hover:text-primary">
-                  Torquay
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-2 text-primary" />
-                <span className="text-muted-foreground">Barnstaple, Devon, UK</span>
-              </li>
-              <li className="flex items-start">
-                <Mail className="h-5 w-5 mr-2 text-primary" />
-                <span className="text-muted-foreground">info@dreampixel.co.uk</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Dream Pixel. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary">
-              Terms of Service
-            </Link>
-          </div>
-        </div>
+  return <footer className="border-t border-border bg-card text-foreground">
+    <div className="container border-b border-border py-20 md:py-32">
+      <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+        <div><p className="eyebrow mb-5 text-primary">Have something in mind?</p><h2 className="max-w-3xl font-display text-5xl leading-[.95] tracking-[-0.07em] md:text-8xl">Let&apos;s make it<br /><span className="text-primary">worth finding.</span></h2></div>
+        <Link href="/contact" className="button-primary shrink-0">Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
       </div>
-    </footer>
-  )
+    </div>
+    <div className="container py-14 md:py-20">
+      <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-8">
+        <div><Link href="/" className="inline-flex" aria-label="Dream Pixel home"><Image src="/images/dream-pixel-logo-white.png" alt="Dream Pixel" width={1549} height={298} className="h-auto w-44" loading="lazy" /></Link><p className="mt-6 max-w-xs text-sm leading-6 text-muted-foreground">An independent digital studio for brands with somewhere to go.</p><p className="mt-8 text-xs uppercase tracking-[0.16em] text-muted-foreground">Barnstaple · Devon · UK</p></div>
+        <div><p className="eyebrow mb-5 text-accent">Explore</p><div className="flex flex-col items-start gap-3">{explore.map(([label, href]) => <Link key={label} href={href} className="footer-link">{label}</Link>)}</div></div>
+        <div><p className="eyebrow mb-5 text-accent">Services</p><div className="flex flex-col items-start gap-3">{services.map(([label, href]) => <Link key={label} href={href} className="footer-link">{label}</Link>)}</div></div>
+        <div><p className="eyebrow mb-5 text-accent">Connect</p><a href="mailto:info@dreampixel.co.uk" className="footer-link inline-flex items-center gap-2">Email us <ArrowUpRight aria-hidden="true" /></a><p className="mt-5 max-w-[14rem] text-sm leading-6 text-muted-foreground">Good conversations start with hello.</p></div>
+      </div>
+      <div className="mt-16 flex flex-col gap-4 border-t border-border pt-5 text-xs uppercase tracking-[0.14em] text-muted-foreground md:flex-row md:items-center md:justify-between"><span>© {new Date().getFullYear()} Dream Pixel</span><div className="flex gap-5"><Link href="/privacy-policy" className="footer-link">Privacy</Link><Link href="/terms-of-service" className="footer-link">Terms</Link><Link href="/accessibility" className="footer-link">Accessibility</Link></div></div>
+    </div>
+  </footer>
 }
-
-// Keep the default export for backward compatibility
 export default Footer

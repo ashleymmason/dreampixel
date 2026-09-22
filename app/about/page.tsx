@@ -1,222 +1,71 @@
+import Image from "next/image"
 import Link from "next/link"
+import { ArrowDownRight, ArrowUpRight, Check, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Users, Award, Clock, Lightbulb, Target, Heart } from "lucide-react"
-import TeamAnimation from "@/components/animations/team-animation"
-import ValuesAnimation from "@/components/animations/values-animation"
+
+const process = [
+  ["01", "Discover", "Understand the business, audience, goals and problems before deciding what to build."],
+  ["02", "Strategy", "Define the structure, positioning, content and technical direction."],
+  ["03", "Design", "Create the visual and user experience system that makes the right things clear."],
+  ["04", "Build", "Develop the experience with performance, accessibility and search in mind."],
+  ["05", "Launch & grow", "Launch, measure, improve and support the work as the business moves forward."],
+] as const
+
+const values = [
+  ["Think before you build", "Good work starts with understanding the problem."],
+  ["Make it useful", "Design should improve the experience, not simply decorate it."],
+  ["Sweat the details", "Small decisions create a better overall experience."],
+  ["Keep improving", "A website is not finished simply because it has launched."],
+] as const
+
+const projects = [
+  { name: "RCS Tuning", type: "Strategy / Web design / Development", image: "/images/portfolio/rcs-tuning.png", href: "/work/rcs-tuning" },
+  { name: "Withymead Cottage", type: "Brand-led digital experience", image: "/images/portfolio/withymead-cottage.png", href: "/work/withymead-cottage" },
+]
+
+export const metadata = {
+  title: "About Dream Pixel | Digital Studio in Devon",
+  description: "Meet Dream Pixel, an independent digital studio creating thoughtful websites, digital experiences and growth strategies in Devon and beyond.",
+}
 
 export default function About() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-white/95"></div>
-        <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              About{" "}
-              <span className="bg-gradient-to-r from-purple-600 to-green-500 bg-clip-text text-transparent">
-                Dream Pixel
-              </span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              We're a passionate team of web designers and digital marketers based in Barnstaple, Devon, dedicated to
-              helping businesses succeed online.
-            </p>
+    <main className="overflow-hidden bg-background">
+      <section className="relative border-b border-border bg-background px-6 py-28 md:px-12 md:py-40">
+        <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(hsl(var(--border))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border))_1px,transparent_1px)] [background-size:4rem_4rem]" />
+        <div className="container relative grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <div>
+            <p className="mb-8 font-mono text-xs uppercase tracking-[0.35em] text-accent">About Dream Pixel / 01</p>
+            <h1 className="font-display max-w-5xl text-6xl font-bold leading-[0.9] tracking-[-0.07em] text-foreground md:text-8xl lg:text-[8.5rem]">We build digital experiences with a little more <span className="text-primary">thought</span> behind them.</h1>
           </div>
+          <div className="flex flex-col gap-10 lg:pb-2">
+            <p className="max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">Dream Pixel is a digital studio creating websites, digital experiences and growth strategies for ambitious businesses across Devon and beyond.</p>
+            <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"><span className="h-px w-16 bg-accent" /> Small studio / Clear thinking</div>
+          </div>
+        </div>
+        <div className="container relative mt-24 flex items-center justify-between border-t border-border pt-5 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"><span>Scroll to explore</span><ArrowDownRight className="text-accent" /></div>
+      </section>
+
+      <section className="bg-secondary px-6 py-24 text-secondary-foreground md:px-12 md:py-36">
+        <div className="container grid gap-16 lg:grid-cols-[0.8fr_1.2fr]">
+          <div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-primary">The brand story / 02</p><h2 className="font-display max-w-xl text-5xl font-bold leading-[0.95] tracking-[-0.06em] md:text-7xl">Good design isn&apos;t decoration.</h2></div>
+          <div className="grid gap-8 text-lg leading-relaxed text-secondary-foreground/70 md:text-xl"><p>Dream Pixel exists to help good businesses establish a stronger presence online. That means making work that is considered, useful and built for the people who need it.</p><p>A website should not simply look good in a presentation. It should make a business easier to understand, easier to find and easier to choose.</p><p>That is why design and performance belong in the same conversation. The sharpest visual idea is only valuable when the experience is fast, accessible and working towards a clear goal.</p><div className="mt-4 flex items-center gap-4 border-t border-secondary-foreground/20 pt-6 font-mono text-xs uppercase tracking-[0.25em] text-primary"><span className="text-3xl">DP</span> Digital, with intent</div></div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
-              <p className="text-lg text-muted-foreground">
-                Dream Pixel was founded with a simple mission: to help businesses in Devon and beyond establish a strong
-                online presence through beautiful, functional websites and effective digital marketing strategies.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                What started as a small freelance operation has grown into a full-service digital agency, but our core
-                values remain the same. We believe in creating websites that not only look stunning but also drive real
-                results for our clients.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Based in Barnstaple, we're proud to serve businesses throughout North Devon and the wider region. Our
-                local knowledge combined with our industry expertise allows us to create digital solutions that truly
-                resonate with your target audience.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-100 to-green-100 rounded-full blur-3xl opacity-30"></div>
-              <TeamAnimation />
-            </div>
-          </div>
-        </div>
-      </section>
+      <section className="px-6 py-24 md:px-12 md:py-36"><div className="container"><div className="mb-16 max-w-4xl"><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent">The point of view / 03</p><h2 className="font-display text-5xl font-bold leading-[0.92] tracking-[-0.06em] md:text-8xl">Design gets attention. <span className="text-primary">Performance gets results.</span></h2></div><div className="grid gap-12 border-t border-border pt-8 lg:grid-cols-[0.7fr_1.3fr]"><p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">One connected system</p><div><p className="max-w-3xl text-2xl leading-tight text-foreground md:text-4xl">UX, design, development, technical SEO, content, performance and conversion are not separate jobs to hand off. They are parts of the same experience.</p><div className="mt-14 flex flex-wrap gap-3">{["UX", "Design", "Development", "Technical SEO", "Content", "Performance", "Conversion"].map((item, index) => <span key={item} className={`border px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] ${index % 3 === 0 ? "border-primary/50 text-primary" : index % 3 === 1 ? "border-accent/50 text-accent" : "border-border text-muted-foreground"}`}>{item}</span>)}</div></div></div></div></section>
 
-      {/* Our Values */}
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
-            <p className="text-xl text-muted-foreground">The principles that guide everything we do</p>
-          </div>
+      <section className="bg-foreground px-6 py-24 text-background md:px-12 md:py-36"><div className="container"><div className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent">How we work / 04</p><h2 className="font-display text-5xl font-bold leading-none tracking-[-0.06em] md:text-8xl">From first thought<br /><span className="text-primary">to the next chapter.</span></h2></div><p className="max-w-xs text-background/60">A straightforward process, with enough room for the good ideas to emerge.</p></div><div className="grid border-t border-background/20">{process.map(([number, title, text]) => <div key={number} className="grid gap-6 border-b border-background/20 py-8 md:grid-cols-[0.2fr_0.5fr_1fr] md:items-start"><span className="font-mono text-sm text-accent">{number}</span><h3 className="font-display text-3xl font-bold tracking-[-0.04em] md:text-4xl">{title}</h3><p className="max-w-md leading-relaxed text-background/60">{text}</p></div>)}</div></div></section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-purple-100">
-              <CardContent className="p-6">
-                <Users className="h-12 w-12 text-purple-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Client-Focused</h3>
-                <p className="text-muted-foreground">
-                  We put our clients at the center of everything we do. Your success is our success, and we're committed
-                  to delivering solutions that meet your specific needs and goals.
-                </p>
-              </CardContent>
-            </Card>
+      <section className="px-6 py-24 md:px-12 md:py-36"><div className="container grid gap-16 lg:grid-cols-[0.7fr_1.3fr]"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-primary">Values / 05</p><h2 className="font-display text-5xl font-bold leading-none tracking-[-0.06em] md:text-7xl">Small enough<br />to <span className="text-accent">care.</span></h2></div><div className="grid border-t border-border">{values.map(([title, text], index) => <div key={title} className="grid gap-5 border-b border-border py-7 md:grid-cols-[0.15fr_0.7fr_1fr]"><span className="font-mono text-xs text-primary">0{index + 1}</span><h3 className="font-display text-2xl font-bold tracking-[-0.04em]">{title}</h3><p className="text-muted-foreground">{text}</p></div>)}</div></div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-green-100">
-              <CardContent className="p-6">
-                <Award className="h-12 w-12 text-green-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Excellence</h3>
-                <p className="text-muted-foreground">
-                  We strive for excellence in every project we undertake. From design and development to marketing and
-                  support, we're committed to delivering the highest quality work.
-                </p>
-              </CardContent>
-            </Card>
+      <section className="bg-primary px-6 py-24 text-primary-foreground md:px-12 md:py-32"><div className="container grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-primary-foreground/70">The people / 06</p><h2 className="font-display text-6xl font-bold leading-[0.88] tracking-[-0.07em] md:text-8xl">A small studio,<br />by design.</h2></div><div className="max-w-xl"><p className="text-2xl leading-tight md:text-4xl">No layers of account management. No agency theatre. Just thoughtful digital work, close collaboration and the people doing the work staying close to it.</p><p className="mt-8 max-w-md text-primary-foreground/70">Dream Pixel is intentionally personal. We keep the studio small so the work can stay focused, direct and genuinely collaborative.</p></div></div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-purple-100">
-              <CardContent className="p-6">
-                <Lightbulb className="h-12 w-12 text-purple-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Innovation</h3>
-                <p className="text-muted-foreground">
-                  The digital landscape is constantly evolving, and so are we. We stay at the forefront of industry
-                  trends and technologies to provide innovative solutions that give our clients a competitive edge.
-                </p>
-              </CardContent>
-            </Card>
+      <section className="px-6 py-24 md:px-12 md:py-36"><div className="container"><div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent">Selected work / 07</p><h2 className="font-display text-5xl font-bold leading-none tracking-[-0.06em] md:text-8xl">Some things<br /><span className="text-primary">we&apos;ve built.</span></h2></div><Link href="/portfolio" className="group flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">View all work <ArrowUpRight className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></Link></div><div className="grid gap-8 lg:grid-cols-3">{projects.map((project, index) => <Link key={project.name} href={project.href} className={`group ${index === 1 ? "lg:mt-20" : ""}`}><div className="relative aspect-[4/3] overflow-hidden bg-muted"><Image src={project.image} alt={`${project.name} project preview`} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(min-width: 1024px) 33vw, 100vw" /></div><div className="flex items-start justify-between gap-4 border-b border-border py-5"><div><h3 className="font-display text-2xl font-bold tracking-[-0.04em]">{project.name}</h3><p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">{project.type}</p></div><ArrowUpRight className="text-accent transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></div></Link>)}</div></div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-green-100">
-              <CardContent className="p-6">
-                <Target className="h-12 w-12 text-green-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Results-Driven</h3>
-                <p className="text-muted-foreground">
-                  We focus on creating websites and implementing strategies that drive real, measurable results for your
-                  business, whether that's increased traffic, leads, or sales.
-                </p>
-              </CardContent>
-            </Card>
+      <section className="bg-secondary px-6 py-24 text-secondary-foreground md:px-12 md:py-32"><div className="container grid gap-12 lg:grid-cols-2 lg:items-end"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-primary">The name / 08</p><h2 className="font-display text-7xl font-bold leading-[0.78] tracking-[-0.08em] md:text-[10rem]">DREAM<br /><span className="text-primary">PIXEL</span></h2></div><div className="flex max-w-md flex-col gap-6"><Plus className="text-accent" /><p className="text-2xl leading-tight md:text-4xl">Imagination, made tangible. A little dream, built one considered pixel at a time.</p><p className="text-secondary-foreground/60">The name is a reminder to hold both sides of the work at once: the ambition of the idea and the craft of making it real.</p></div></div></section>
 
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-purple-100">
-              <CardContent className="p-6">
-                <Clock className="h-12 w-12 text-purple-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Reliability</h3>
-                <p className="text-muted-foreground">
-                  We deliver on our promises and meet our deadlines. You can count on us to be there when you need us,
-                  providing ongoing support and guidance.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 border-green-100">
-              <CardContent className="p-6">
-                <Heart className="h-12 w-12 text-green-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2">Passion</h3>
-                <p className="text-muted-foreground">
-                  We're passionate about what we do. We love creating beautiful websites and helping businesses grow,
-                  and that passion shines through in every project we work on.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-purple-50 to-green-50">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-100 to-green-100 rounded-full blur-3xl opacity-30"></div>
-              <ValuesAnimation />
-            </div>
-            <div className="space-y-6 order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold">Why Choose Dream Pixel?</h2>
-              <p className="text-lg text-muted-foreground">
-                When you choose Dream Pixel, you're not just getting a website – you're getting a dedicated partner
-                committed to your online success.
-              </p>
-
-              <div className="grid gap-4">
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                  <div>
-                    <h3 className="font-medium">Local Expertise</h3>
-                    <p className="text-sm text-muted-foreground">Based in Barnstaple, we understand the local market</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                  <div>
-                    <h3 className="font-medium">Personalized Service</h3>
-                    <p className="text-sm text-muted-foreground">Tailored solutions for your specific needs</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                  <div>
-                    <h3 className="font-medium">Results-Driven Approach</h3>
-                    <p className="text-sm text-muted-foreground">Focus on achieving your business objectives</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                  <div>
-                    <h3 className="font-medium">Ongoing Support</h3>
-                    <p className="text-sm text-muted-foreground">We're here for you long after your website launches</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <Button
-                  asChild
-                  className="bg-gradient-to-r from-purple-600 to-green-500 hover:from-purple-700 hover:to-green-600"
-                >
-                  <Link href="/contact">Get in Touch</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-purple-50 to-green-50">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold">Ready to work with us?</h2>
-            <p className="text-xl text-muted-foreground">
-              Contact us today to discuss your project and see how we can help your business grow online.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-purple-600 to-green-500 hover:from-purple-700 hover:to-green-600"
-              >
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/portfolio">View Our Work</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      <section className="bg-foreground px-6 py-24 text-background md:px-12 md:py-32"><div className="container flex flex-col justify-between gap-12 md:flex-row md:items-end"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent">Start something / 09</p><h2 className="font-display max-w-4xl text-6xl font-bold leading-[0.88] tracking-[-0.07em] md:text-9xl">Got a project<br /><span className="text-primary">in mind?</span></h2><p className="mt-8 max-w-md text-lg text-background/60">Tell us what you&apos;re working on and let&apos;s see where we can take it.</p></div><div className="flex flex-wrap gap-4"><Button asChild size="lg" variant="secondary"><Link href="/contact">Start a project <ArrowUpRight data-icon="inline-end" /></Link></Button><Button asChild size="lg" variant="outline" className="border-background/30 bg-transparent text-background hover:bg-background hover:text-foreground"><Link href="/portfolio">View our work <ArrowUpRight data-icon="inline-end" /></Link></Button></div></div></section>
+    </main>
   )
 }

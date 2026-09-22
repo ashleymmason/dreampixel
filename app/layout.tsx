@@ -1,6 +1,6 @@
 import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Inter, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
@@ -8,15 +8,16 @@ import Footer from "@/components/footer"
 import CookieConsent from "@/components/cookie-consent"
 import Script from "next/script"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 
 export const metadata: Metadata = {
   title: {
-    default: "Dream Pixel | Web Design & Digital Marketing in Devon",
+    default: "Dream Pixel — Better online. More you.",
     template: "%s | Dream Pixel",
   },
   description:
-    "Professional web design, SEO, and digital marketing services in Devon. Creating beautiful, functional websites that drive results for your business.",
+    "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
   keywords: ["web design", "SEO", "digital marketing", "Devon", "Barnstaple", "website development"],
   authors: [{ name: "Dream Pixel" }],
   creator: "Dream Pixel",
@@ -37,10 +38,10 @@ export const metadata: Metadata = {
     siteName: "Dream Pixel",
     title: "Dream Pixel | Web Design & Digital Marketing in Devon",
     description:
-      "Professional web design, SEO, and digital marketing services in Devon. Creating beautiful, functional websites that drive results for your business.",
+      "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
     images: [
       {
-        url: "/images/dream-pixel-logo.png",
+        url: "/images/dream-pixel-logo-white.png",
         width: 1200,
         height: 630,
         alt: "Dream Pixel - Web Design & Digital Marketing",
@@ -51,8 +52,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dream Pixel | Web Design & Digital Marketing in Devon",
     description:
-      "Professional web design, SEO, and digital marketing services in Devon. Creating beautiful, functional websites that drive results for your business.",
-    images: ["/images/dream-pixel-logo.png"],
+      "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
+    images: ["/images/dream-pixel-logo-white.png"],
   },
   robots: {
     index: true,
@@ -78,8 +79,13 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon.ico" }],
   },
   manifest: "/site.webmanifest",
-  themeColor: "#ffffff",
-    generator: 'v0.app'
+  generator: "v0.app",
+}
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+  width: "device-width",
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -88,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} bg-background`} suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="JIrLMp8Z3RLYR8_yQRbZLtNRK2j3YWo_jCppOhwepkA" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -96,12 +102,12 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#0a0a0a" />
 
         {/* Google Analytics with Consent Mode */}
         <Script
           id="gtag-consent"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -143,11 +149,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <div className="flex min-h-screen flex-col bg-white">
+          <div className="flex min-h-screen flex-col bg-background">
+            <a href="#main-content" className="skip-link">Skip to content</a>
             <Header />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1">{children}</main>
             <Footer />
             <CookieConsent />
           </div>

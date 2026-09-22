@@ -57,7 +57,7 @@ export default function WebDesignTorquay() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-green-500" />
-                <span>Affordable Pricing</span>
+                <span>Project investment</span>
               </div>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function WebDesignTorquay() {
                 <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
                   <span className="text-2xl font-bold text-green-600">4</span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Affordable Pricing</h3>
+                <h3 className="text-xl font-bold mb-2">Project investment</h3>
                 <p className="text-muted-foreground">
                   We offer competitive pricing without compromising on quality, making professional web design
                   accessible to businesses of all sizes in Torquay, from small B&Bs to large attractions.

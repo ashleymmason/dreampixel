@@ -1,13 +1,16 @@
+import type { Metadata } from "next"
 import Link from "next/link"
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, MapPin } from "lucide-react"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Web Design Locations in Devon | Dream Pixel",
   description:
     "Professional web design services throughout Devon. We create beautiful, functional websites for businesses in Barnstaple, Bideford, Exeter, Plymouth, Torquay, and beyond.",
+  alternates: { canonical: "/locations" },
 }
 
 export default function Locations() {
