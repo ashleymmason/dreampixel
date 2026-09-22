@@ -147,8 +147,9 @@ export default function RootLayout({
       <body className={`${inter.className} bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="flex min-h-screen flex-col bg-background">
+            <a href="#main-content" className="skip-link">Skip to content</a>
             <Header />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1">{children}</main>
             <Footer />
             <CookieConsent />
           </div>
