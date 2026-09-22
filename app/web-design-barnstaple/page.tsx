@@ -52,7 +52,7 @@ export const metadata = {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       name: "Dream Pixel Web Design Barnstaple",
-      image: "https://dreampixel.co.uk/images/dream-pixel-logo.png",
+      image: "https://dreampixel.co.uk/images/dream-pixel-logo-white.png",
       url: "https://dreampixel.co.uk/web-design-barnstaple",
       "@id": "https://dreampixel.co.uk/web-design-barnstaple",
       telephone: "01271 123456",

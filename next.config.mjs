@@ -40,6 +40,51 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/services/e-commerce',
+        destination: '/services/ecommerce',
+        permanent: true,
+      },
+      {
+        source: '/services/maintenance',
+        destination: '/services/website-maintenance',
+        permanent: true,
+      },
+      {
+        source: '/services/ongoing-seo',
+        destination: '/services/seo',
+        permanent: true,
+      },
+      {
+        source: '/services/optimisation',
+        destination: '/services/technical-seo',
+        permanent: true,
+      },
+      {
+        source: '/services/website-hosting',
+        destination: '/services/hosting',
+        permanent: true,
+      },
+      {
+        source: '/services/ux-ui',
+        destination: '/services/web-design',
+        permanent: true,
+      },
+      {
+        source: '/services/hosting',
+        destination: '/services/website-maintenance',
+        permanent: true,
+      },
+      {
+        source: '/services/backlinks',
+        destination: '/services/digital-pr',
+        permanent: true,
+      },
+      {
+        source: '/services/ppc',
+        destination: '/services/seo',
+        permanent: true,
+      },
+      {
         source: '/web-design-in-plymouth',
         destination: '/web-design-plymouth',
         permanent: true,
