@@ -57,6 +57,7 @@ export function Header() {
             </div>
           </div>
           {primaryLinks.slice(1).map(([label, href]) => <Link key={label} href={href} className="nav-link">{label}</Link>)}
+          <Link href="/locations" className="nav-link">Locations</Link>
         </nav>
         <Link href="/contact" className="button-primary hidden md:inline-flex" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
         <button type="button" className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary md:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <span className="flex flex-col gap-1.5" aria-hidden="true"><span className="block h-px w-5 bg-current" /><span className="block h-px w-5 bg-current" /></span>}</button>
@@ -67,6 +68,7 @@ export function Header() {
           <div className="border-y border-border py-4"><button type="button" className="flex w-full items-center justify-between font-display text-4xl leading-none tracking-[-0.06em]" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>Services <ChevronDown className={cn("size-5 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" /></button>{servicesOpen && <div className="mt-4 grid gap-4 pl-1"><p className="eyebrow text-primary">Websites · Growth · Ongoing</p><div className="grid grid-cols-2 gap-x-4 gap-y-2">{serviceGroups.flatMap((group) => group.items).map(([label, href]) => <Link key={label} href={href} className="text-base leading-6 text-muted-foreground" onClick={closeMenu}>{label}</Link>)}</div><Link href="/services" className="link-arrow text-sm font-semibold" onClick={closeMenu}>View all services <ArrowUpRight aria-hidden="true" /></Link></div>}</div>
           <Link href="/about" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>About</Link>
           <Link href="/insights" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Insights</Link>
+          <Link href="/locations" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Locations</Link>
           <Link href="/contact" className="button-primary mt-2 w-full justify-between" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
         </nav>
       </div>
