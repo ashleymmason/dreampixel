@@ -45,7 +45,7 @@
 .animate-pulse { animation: pulse 3s ease-in-out infinite; }
 
 /* Legacy page surfaces inherit the homepage studio system. */
-[class*="bg-gradient-to"], [class*="bg-gradient-to-r"], [class*="bg-gradient-to-b"] { background-image: none !important; background-color: hsl(var(--background)) !important; }
+/* Keep the purple-to-green gradients used by legacy CTA and hero surfaces. */
 [class*="bg-white"], [class*="bg-gray-"] { background-color: hsl(var(--background)) !important; }
 [class*="text-black"], [class*="text-gray-700"], [class*="text-gray-800"], [class*="text-gray-900"] { color: hsl(var(--foreground)) !important; }
 [class*="text-gray-500"], [class*="text-gray-600"], [class*="text-gray-400"] { color: hsl(var(--muted-foreground)) !important; }
