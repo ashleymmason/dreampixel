@@ -9,6 +9,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: process.env.NODE_ENV === 'development',
+    formats: ['image/avif', 'image/webp'],
     domains: ['dreampixel.co.uk'],
     remotePatterns: [
       {

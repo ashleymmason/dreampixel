@@ -41,7 +41,7 @@ export function Header() {
     <header className={cn("sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl transition-[box-shadow,background-color] duration-300", scrolled && "bg-background/95 shadow-[0_12px_40px_hsl(var(--background)/.35)]")}>
       <div className="container flex h-[4.5rem] items-center justify-between transition-[height] duration-300 md:h-20" data-scrolled={scrolled}>
         <Link href="/" className="shrink-0" onClick={closeMenu} aria-label="Dream Pixel home">
-          <Image src="/images/dream-pixel-logo-white.png" alt="Dream Pixel" width={1549} height={298} className="h-auto w-32 md:w-40" priority unoptimized />
+          <Image src="/images/dream-pixel-logo-white.png" alt="Dream Pixel" width={1549} height={298} className="h-auto w-32 md:w-40" priority />
         </Link>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
           <Link href="/portfolio" className="nav-link">Work</Link>

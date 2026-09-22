@@ -41,7 +41,7 @@ export default function TestimonialCarousel() {
   const [autoplay, setAutoplay] = useState(true)
 
   const next = () => {
-    setCurrent((current + 1) % testimonials.length)
+    setCurrent((value) => (value + 1) % testimonials.length)
   }
 
   const prev = () => {
@@ -56,7 +56,7 @@ export default function TestimonialCarousel() {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [current, autoplay])
+  }, [autoplay])
 
   return (
     <div className="relative">

@@ -107,7 +107,7 @@ export default function RootLayout({
         {/* Google Analytics with Consent Mode */}
         <Script
           id="gtag-consent"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
