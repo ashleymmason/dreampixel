@@ -47,6 +47,8 @@
 /* Legacy page surfaces inherit the homepage studio system. */
 [class*="bg-gradient-to"], [class*="bg-gradient-to-r"], [class*="bg-gradient-to-b"] { background-image: none !important; background-color: hsl(var(--background)) !important; }
 [class*="bg-white"], [class*="bg-gray-"] { background-color: hsl(var(--background)) !important; }
+[class*="text-black"], [class*="text-gray-700"], [class*="text-gray-800"], [class*="text-gray-900"] { color: hsl(var(--foreground)) !important; }
+[class*="text-gray-500"], [class*="text-gray-600"], [class*="text-gray-400"] { color: hsl(var(--muted-foreground)) !important; }
 [class*="text-purple-"] { color: hsl(var(--primary)) !important; }
 [class*="text-green-"], [class*="text-emerald-"] { color: hsl(var(--accent)) !important; }
 [class*="bg-purple-"] { background-color: hsl(var(--primary) / 0.12) !important; color: hsl(var(--primary)) !important; }

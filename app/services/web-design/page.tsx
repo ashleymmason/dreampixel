@@ -9,7 +9,7 @@ export default function WebDesignService() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
+      <section className="relative py-20 md:py-28 overflow-hidden border-b border-primary/20 bg-primary/5">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-white/95"></div>
         <div className="container relative z-10">
