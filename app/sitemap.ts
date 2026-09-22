@@ -4,7 +4,7 @@ import { serviceSlugs } from "@/lib/services"
 
 const siteUrl = "https://dreampixel.co.uk"
 const routes = ["/", "/about", "/portfolio", "/services", "/contact", "/locations", "/insights", "/insights/web-design", "/insights/seo"]
-const workSlugs = ["rcs-tuning", "truck-bracket", "withymead-cottage", "rjh-construction", "bandpress", "capstones-lookout", "upcoming-bands"]
+const workSlugs = ["rcs-tuning", "truck-bracket", "withymead-cottage", "rjh-construction", "bandpress", "capstones-lookout", "upcoming-bands", "meg-scoins"]
 const locationSlugs = ["barnstaple", "bideford", "exeter", "plymouth", "torquay"]
 
 export default function sitemap(): MetadataRoute.Sitemap {
