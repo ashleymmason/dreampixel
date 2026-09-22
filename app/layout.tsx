@@ -41,10 +41,10 @@ export const metadata: Metadata = {
       "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
     images: [
       {
-        url: "/images/dream-pixel-logo-white.png",
-        width: 1200,
-        height: 630,
-        alt: "Dream Pixel - Web Design & Digital Marketing",
+        url: "/images/dream-pixel-social-default.jpeg",
+        width: 1600,
+        height: 900,
+        alt: "Dream Pixel",
       },
     ],
   },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "Dream Pixel | Web Design & Digital Marketing in Devon",
     description:
       "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
-    images: ["/images/dream-pixel-logo-white.png"],
+    images: ["/images/dream-pixel-social-default.jpeg"],
   },
   robots: {
     index: true,
