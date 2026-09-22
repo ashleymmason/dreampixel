@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon.ico" }],
   },
   manifest: "/site.webmanifest",
-  themeColor: "#ffffff",
+  themeColor: "#0a0a0a",
     generator: 'v0.app'
 }
 
@@ -97,7 +97,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#f4f4ef" />
+        <meta name="theme-color" content="#0a0a0a" />
 
         {/* Google Analytics with Consent Mode */}
         <Script

@@ -13,7 +13,7 @@ const primaryLinks = [
 ] as const
 
 const serviceGroups = [
-  { label: "Websites", items: [["Web Design", "/services/web-design"], ["Web Development", "/services/web-development"], ["E-commerce", "/services/ecommerce"], ["Website Redesign", "/services/website-redesign"], ["UX / UI", "/services/ux-ui"]] },
+  { label: "Websites", items: [["Web Design", "/services/web-design"], ["Web Development", "/services/website-development"], ["E-commerce", "/services/ecommerce"], ["Website Redesign", "/services/website-redesign"], ["UX / UI", "/services/web-design"]] },
   { label: "Growth", items: [["SEO", "/services/seo"], ["Local SEO", "/services/local-seo"], ["Technical SEO", "/services/technical-seo"], ["Content", "/services/content"], ["Digital PR", "/services/digital-pr"]] },
   { label: "Ongoing", items: [["Maintenance", "/services/website-maintenance"], ["Hosting", "/services/hosting"], ["Ongoing SEO", "/services/seo"], ["Optimisation", "/services/technical-seo"]] },
 ] as const
