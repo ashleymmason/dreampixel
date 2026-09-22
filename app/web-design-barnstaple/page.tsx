@@ -116,7 +116,7 @@ export const metadata = {
           name: "How long does it take to design and build a website in Barnstaple?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The timeframe for designing and building a website in Barnstaple depends on the complexity of the project. A simple informational website can take 2-4 weeks, while more complex e-commerce sites may take 8-12 weeks. At Dream Pixel, we work efficiently to deliver your website on time without compromising on quality.",
+            text: "Most projects typically take 1–2 months, but the timeframe depends on the length and complexity of the project. A simple informational website may move faster, while larger e-commerce or content-heavy sites can take longer. We work efficiently without compromising on quality.",
           },
         },
         {
