@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -12,7 +13,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="font-display text-2xl font-bold tracking-[-0.08em]" onClick={() => setOpen(false)}>dream<span className="text-primary">*</span>pixel</Link>
+        <Link href="/" className="inline-flex items-center" onClick={() => setOpen(false)}><Image src="/images/dream-pixel-logo.png" alt="Dream Pixel" width={148} height={22} className="h-auto w-36" priority /></Link>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map(([label, href]) => <Link key={label} href={href} className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground">{label}</Link>)}
         </nav>

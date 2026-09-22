@@ -10,19 +10,19 @@
     --card-foreground: 60 8% 8%;
     --popover: 60 8% 95%;
     --popover-foreground: 60 8% 8%;
-    --primary: 76 100% 54%;
-    --primary-foreground: 60 8% 8%;
+    --primary: 264 88% 63%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 60 7% 89%;
     --secondary-foreground: 60 8% 8%;
     --muted: 60 7% 89%;
     --muted-foreground: 60 4% 40%;
-    --accent: 76 100% 54%;
+    --accent: 154 100% 42%;
     --accent-foreground: 60 8% 8%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 60 5% 78%;
     --input: 60 5% 78%;
-    --ring: 76 100% 54%;
+    --ring: 264 88% 63%;
     --radius: 0rem;
   }
   * { @apply border-border; }
@@ -43,6 +43,16 @@
 
 @keyframes pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
 .animate-pulse { animation: pulse 3s ease-in-out infinite; }
+
+/* Legacy page surfaces inherit the homepage studio system. */
+[class*="bg-gradient-to"], [class*="bg-gradient-to-r"], [class*="bg-gradient-to-b"] { background-image: none !important; background-color: hsl(var(--background)) !important; }
+[class*="bg-white"], [class*="bg-gray-"] { background-color: hsl(var(--background)) !important; }
+[class*="text-purple-"] { color: hsl(var(--primary)) !important; }
+[class*="text-green-"], [class*="text-emerald-"] { color: hsl(var(--accent)) !important; }
+[class*="bg-purple-"] { background-color: hsl(var(--primary) / 0.12) !important; color: hsl(var(--primary)) !important; }
+[class*="bg-green-"] { background-color: hsl(var(--accent) / 0.14) !important; color: hsl(var(--foreground)) !important; }
+[class*="border-purple-"] { border-color: hsl(var(--primary) / 0.35) !important; }
+[class*="border-green-"] { border-color: hsl(var(--accent) / 0.35) !important; }
 
 .container { width: 100%; margin-inline: auto; padding-inline: 1.5rem; }
 @media (min-width: 768px) { .container { max-width: 80rem; padding-inline: 3rem; } }
