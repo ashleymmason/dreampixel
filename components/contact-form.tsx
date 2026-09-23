@@ -36,8 +36,13 @@ export default function ContactForm() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setStatus("sending")
     setError("")
+    if (!form.services.length) {
+      setStatus("error")
+      setError("Please choose at least one service so we know how to help.")
+      return
+    }
+    setStatus("sending")
     const result = await sendEmail(form)
     if (result.success) setStatus("success")
     else { setStatus("error"); setError(result.message || "Something went wrong. Please try again.") }
