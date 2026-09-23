@@ -94,7 +94,11 @@ export const insights: Insight[] = [
     excerpt: "A practical guide to becoming more visible for the local searches that matter to a Devon business.",
     date: "3 October 2026", isoDate: "2026-10-03", readTime: "8 min read", image: "/images/barnstaple-reflected-in-water.webp", alt: "Barnstaple riverside in North Devon",
     intro: "Local SEO is not about repeating a town name. It is about making your business, service area and evidence clear enough for people and search engines to trust.",
-    sections: [],
+    sections: [
+      { heading: "Start with the real service area", paragraphs: ["Decide where you genuinely serve customers and which places matter commercially. A useful local page explains the relationship between the business and the place; it does not simply swap a location name into a template."] },
+      { heading: "Make the business easy to verify", paragraphs: ["Consistent business details, a complete Google Business Profile, useful reviews, local evidence and clear contact information all help reduce uncertainty. The website should support those signals with specific, readable service content."] },
+      { heading: "Build local relevance into useful pages", paragraphs: ["Service pages, case studies, FAQs and genuinely helpful insights can each answer a different local question. Together they create a stronger topical footprint than a single thin location page."] },
+    ],
     related: ["seo-is-not-a-layer-you-add-later", "how-to-write-a-service-page-that-ranks"]
   },
   {
