@@ -46,6 +46,8 @@
   .button-primary, .button-secondary { align-items: center; display: inline-flex; gap: .8rem; justify-content: center; min-height: 3.1rem; padding: .8rem 1.15rem; font-size: .68rem; font-weight: 700; letter-spacing: .14em; line-height: 1.2; text-transform: uppercase; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease; }
   .button-primary.hidden { display: none; }
   .button-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .filter-pill { border: 1px solid hsl(var(--border)); background: transparent; color: hsl(var(--muted-foreground)); min-height: 2.75rem; padding: .65rem .85rem; font-size: .72rem; font-weight: 600; letter-spacing: .03em; transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease; }
+  .filter-pill:hover, .filter-pill[aria-pressed='true'] { border-color: hsl(var(--primary)); background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
   .button-primary:hover { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); transform: translateY(-2px); }
   .button-primary:focus-visible { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
   .button-primary:disabled, .button-primary[aria-disabled='true'] { background: hsl(var(--muted)); color: hsl(var(--muted-foreground)); transform: none; }

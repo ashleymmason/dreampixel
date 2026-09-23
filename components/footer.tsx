@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 
-const explore = [["Work", "/portfolio"], ["Services", "/services"], ["About", "/about"], ["Insights", "/insights"], ["Testimonials", "/testimonials"], ["Contact", "/contact"]]
+const explore = [["Work", "/portfolio"], ["Services", "/services"], ["About", "/about"], ["Insights", "/insights"], ["Testimonials", "/testimonials"], ["Dictionary", "/glossary/"], ["Contact", "/contact"]]
 const services = [["Web Design", "/services/web-design"], ["Development", "/services/website-development"], ["E-commerce", "/services/ecommerce"], ["SEO", "/services/seo"], ["Local SEO", "/services/local-seo"], ["Maintenance", "/services/website-maintenance"]]
 
 export function Footer() {

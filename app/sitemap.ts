@@ -3,7 +3,7 @@ import { insights } from "@/lib/insights"
 import { serviceSlugs } from "@/lib/services"
 
 const siteUrl = "https://dreampixel.co.uk"
-const routes = ["/", "/about", "/portfolio", "/services", "/contact", "/locations", "/testimonials", "/insights", "/insights/web-design", "/insights/seo"]
+const routes = ["/", "/about", "/portfolio", "/services", "/contact", "/locations", "/testimonials", "/glossary/", "/insights", "/insights/web-design", "/insights/seo"]
 const workSlugs = ["rcs-tuning", "truck-bracket", "withymead-cottage", "rjh-construction", "bandpress", "capstones-lookout", "upcoming-bands", "meg-scoins"]
 const locationSlugs = ["barnstaple", "bideford", "exeter", "plymouth", "torquay"]
 const siteLastModified = new Date("2026-09-29")
