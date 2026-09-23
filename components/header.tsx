@@ -18,12 +18,12 @@ const serviceGroups = [
   { label: "Websites", items: [["Web Design", "/services/web-design"], ["Web Development", "/services/website-development"], ["E-commerce", "/services/ecommerce"], ["Website Redesign", "/services/website-redesign"], ["UX / UI", "/services/web-design"]] },
   { label: "Growth", items: [["SEO", "/services/seo"], ["Local SEO", "/services/local-seo"], ["Technical SEO", "/services/technical-seo"], ["Content", "/services/content"], ["Digital PR", "/services/digital-pr"]] },
   { label: "Ongoing", items: [["Maintenance", "/services/website-maintenance"], ["Hosting", "/services/hosting"], ["Ongoing SEO", "/services/seo"], ["Optimisation", "/services/technical-seo"]] },
+  { label: "Locations", items: locations },
 ] as const
 
 export function Header() {
   const [open, setOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  const [locationsOpen, setLocationsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const menuPanelRef = useRef<HTMLDivElement>(null)
@@ -43,7 +43,6 @@ export function Header() {
   const closeMenu = () => {
     setOpen(false)
     setServicesOpen(false)
-    setLocationsOpen(false)
     requestAnimationFrame(() => menuButtonRef.current?.focus())
   }
 
@@ -84,24 +83,14 @@ export function Header() {
             <button type="button" className="nav-link inline-flex items-center gap-1" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>
               Services <ChevronDown className={cn("size-3 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" />
             </button>
-            <div className={cn("absolute right-0 top-full mt-5 w-[42rem] border border-border bg-card p-6 shadow-2xl transition-all duration-200", servicesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0")}>
-              <div className="grid grid-cols-3 gap-6">
+            <div className={cn("absolute right-0 top-full mt-5 w-[56rem] border border-border bg-card p-6 shadow-2xl transition-all duration-200", servicesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0")}>
+              <div className="grid grid-cols-4 gap-6">
                 {serviceGroups.map((group) => <div key={group.label}><p className="eyebrow mb-4 text-primary">{group.label}</p><div className="flex flex-col gap-3">{group.items.map(([label, href]) => <Link key={label} href={href} className="text-sm text-muted-foreground transition-colors hover:text-foreground" onClick={closeMenu}>{label}</Link>)}</div></div>)}
               </div>
               <Link href="/services" className="link-arrow mt-7 inline-flex border-t border-border pt-4 text-sm font-semibold" onClick={closeMenu}>View all services <ArrowUpRight aria-hidden="true" /></Link>
             </div>
           </div>
           {primaryLinks.slice(1).map(([label, href]) => <Link key={label} href={href} className="nav-link">{label}</Link>)}
-          <div className="relative" onMouseEnter={() => setLocationsOpen(true)} onMouseLeave={() => setLocationsOpen(false)}>
-            <button type="button" className="nav-link inline-flex items-center gap-1" aria-expanded={locationsOpen} onClick={() => setLocationsOpen(!locationsOpen)}>
-              Locations <ChevronDown className={cn("size-3 transition-transform", locationsOpen && "rotate-180")} aria-hidden="true" />
-            </button>
-            <div className={cn("absolute right-0 top-full mt-5 w-72 border border-border bg-card p-6 shadow-2xl transition-all duration-200", locationsOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0")}>
-              <p className="eyebrow mb-4 text-primary">Web design across Devon</p>
-              <div className="flex flex-col gap-3">{locations.map(([label, href]) => <Link key={label} href={href} className="text-sm text-muted-foreground transition-colors hover:text-foreground" onClick={closeMenu}>{label}</Link>)}</div>
-              <Link href="/locations" className="link-arrow mt-7 inline-flex border-t border-border pt-4 text-sm font-semibold" onClick={closeMenu}>View all locations <ArrowUpRight aria-hidden="true" /></Link>
-            </div>
-          </div>
           <Link href="/testimonials" className="nav-link">Testimonials</Link>
   <Link href="/glossary/" className="nav-link">Dictionary</Link>
         </nav>
@@ -114,7 +103,6 @@ export function Header() {
           <div className="border-y border-border py-4"><button type="button" className="flex w-full items-center justify-between font-display text-4xl leading-none tracking-[-0.06em]" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>Services <ChevronDown className={cn("size-5 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" /></button>{servicesOpen && <div className="mt-4 grid gap-4 pl-1"><p className="eyebrow text-primary">Websites · Growth · Ongoing</p><div className="grid grid-cols-2 gap-x-4 gap-y-2">{serviceGroups.flatMap((group) => group.items).map(([label, href]) => <Link key={label} href={href} className="text-base leading-6 text-muted-foreground" onClick={closeMenu}>{label}</Link>)}</div><Link href="/services" className="link-arrow text-sm font-semibold" onClick={closeMenu}>View all services <ArrowUpRight aria-hidden="true" /></Link></div>}</div>
           <Link href="/about" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>About</Link>
           <Link href="/insights" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Insights</Link>
-          <div className="border-y border-border py-4"><button type="button" className="flex w-full items-center justify-between font-display text-4xl leading-none tracking-[-0.06em]" aria-expanded={locationsOpen} onClick={() => setLocationsOpen(!locationsOpen)}>Locations <ChevronDown className={cn("size-5 transition-transform", locationsOpen && "rotate-180")} aria-hidden="true" /></button>{locationsOpen && <div className="mt-4 grid gap-3 pl-1"><p className="eyebrow text-primary">Web design across Devon</p>{locations.map(([label, href]) => <Link key={label} href={href} className="text-base leading-6 text-muted-foreground" onClick={closeMenu}>{label}</Link>)}<Link href="/locations" className="link-arrow text-sm font-semibold" onClick={closeMenu}>View all locations <ArrowUpRight aria-hidden="true" /></Link></div>}</div>
           <Link href="/testimonials" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Testimonials</Link>
   <Link href="/glossary/" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Dictionary</Link>
           <Link href="/contact" className="button-primary mt-2 w-full justify-between" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
