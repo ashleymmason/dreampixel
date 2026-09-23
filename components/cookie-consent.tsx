@@ -57,24 +57,24 @@ export default function CookieConsent() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4">
-      <Card className="mx-auto max-w-4xl border-2 border-purple-200 bg-white shadow-lg">
+    <div className="fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4" role="dialog" aria-label="Cookie preferences" aria-describedby="cookie-consent-description">
+      <Card className="mx-auto max-w-4xl border border-primary/60 bg-background shadow-2xl">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
-            <Cookie className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
+            <Cookie className="h-6 w-6 shrink-0 mt-1 text-primary" aria-hidden="true" />
             <div className="flex-1">
               <h3 className="font-semibold text-lg mb-2">We use cookies</h3>
-              <p className="text-gray-600 mb-4">
+              <p id="cookie-consent-description" className="mb-4 text-muted-foreground">
                 We use cookies to enhance your browsing experience, analyze site traffic, and provide personalized
                 content. By clicking "Accept All", you consent to our use of cookies. You can manage your preferences or
                 learn more in our{" "}
-                <Link href="/privacy-policy" className="text-purple-600 hover:underline">
+                <Link href="/privacy-policy" className="text-primary hover:text-accent hover:underline">
                   Privacy Policy
                 </Link>
                 .
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button onClick={acceptCookies} className="bg-purple-600 hover:bg-purple-700">
+                <Button onClick={acceptCookies} className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground">
                   Accept All
                 </Button>
                 <Button onClick={declineCookies} variant="outline">
@@ -82,8 +82,8 @@ export default function CookieConsent() {
                 </Button>
               </div>
             </div>
-            <Button variant="ghost" size="sm" onClick={declineCookies} className="flex-shrink-0">
-              <X className="h-4 w-4" />
+            <Button variant="ghost" size="sm" onClick={declineCookies} className="shrink-0" aria-label="Close cookie preferences">
+              <X className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>
         </CardContent>

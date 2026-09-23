@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, ChevronDown, X } from "lucide-react"
@@ -22,6 +22,8 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const menuPanelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -35,7 +37,36 @@ export function Header() {
     return () => { document.body.style.overflow = "" }
   }, [open])
 
-  const closeMenu = () => { setOpen(false); setServicesOpen(false) }
+  const closeMenu = () => {
+    setOpen(false)
+    setServicesOpen(false)
+    requestAnimationFrame(() => menuButtonRef.current?.focus())
+  }
+
+  useEffect(() => {
+    if (!open) return
+    const panel = menuPanelRef.current
+    const focusable = panel?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")
+    focusable?.[0]?.focus()
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu()
+        return
+      }
+      if (event.key !== "Tab" || !focusable?.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+    document.addEventListener("keydown", onKeyDown)
+    return () => document.removeEventListener("keydown", onKeyDown)
+  }, [open])
 
   return (
     <header className={cn("sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl transition-[box-shadow,background-color] duration-300", scrolled && "bg-background/95 shadow-[0_12px_40px_hsl(var(--background)/.35)]")}>
@@ -61,9 +92,9 @@ export function Header() {
           <Link href="/testimonials" className="nav-link">Testimonials</Link>
         </nav>
         <Link href="/contact" className="button-primary hidden md:inline-flex" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
-        <button type="button" className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary md:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <span className="flex flex-col gap-1.5" aria-hidden="true"><span className="block h-px w-5 bg-current" /><span className="block h-px w-5 bg-current" /></span>}</button>
+        <button ref={menuButtonRef} type="button" className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary md:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <span className="flex flex-col gap-1.5" aria-hidden="true"><span className="block h-px w-5 bg-current" /><span className="block h-px w-5 bg-current" /></span>}</button>
       </div>
-      <div id="mobile-navigation" className={cn("absolute inset-x-0 top-full z-[60] h-[calc(100dvh-4.5rem)] overflow-y-auto bg-[hsl(var(--background))] px-6 pb-8 pt-6 transition-[opacity,visibility] duration-300 md:hidden", open ? "visible opacity-100" : "invisible opacity-0")}>
+      <div ref={menuPanelRef} id="mobile-navigation" inert={!open} className={cn("absolute inset-x-0 top-full z-[60] h-[calc(100dvh-4.5rem)] overflow-y-auto bg-[hsl(var(--background))] px-6 pb-8 pt-6 transition-[opacity,visibility] duration-300 md:hidden", open ? "visible opacity-100" : "invisible opacity-0")}>
         <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
           <Link href="/portfolio" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Work</Link>
           <div className="border-y border-border py-4"><button type="button" className="flex w-full items-center justify-between font-display text-4xl leading-none tracking-[-0.06em]" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>Services <ChevronDown className={cn("size-5 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" /></button>{servicesOpen && <div className="mt-4 grid gap-4 pl-1"><p className="eyebrow text-primary">Websites · Growth · Ongoing</p><div className="grid grid-cols-2 gap-x-4 gap-y-2">{serviceGroups.flatMap((group) => group.items).map(([label, href]) => <Link key={label} href={href} className="text-base leading-6 text-muted-foreground" onClick={closeMenu}>{label}</Link>)}</div><Link href="/services" className="link-arrow text-sm font-semibold" onClick={closeMenu}>View all services <ArrowUpRight aria-hidden="true" /></Link></div>}</div>
