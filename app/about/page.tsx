@@ -39,7 +39,7 @@ export default function About() {
             <h1 className="font-display max-w-5xl text-6xl font-bold leading-[0.9] tracking-[-0.07em] text-foreground md:text-8xl lg:text-[8.5rem]">We build digital experiences with a little more <span className="text-primary">thought</span> behind them.</h1>
           </div>
           <div className="flex flex-col gap-10 lg:pb-2">
-            <p className="max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">Dream Pixel is a digital studio creating websites, digital experiences and growth strategies for ambitious businesses across Devon and beyond.</p>
+            <p className="max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">Dream Pixel is an independent digital studio in Barnstaple, Devon, specialising in web design, website development, e-commerce and SEO for ambitious businesses across Devon and beyond.</p>
             <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground"><span className="h-px w-16 bg-accent" /> Small studio / Clear thinking</div>
           </div>
         </div>

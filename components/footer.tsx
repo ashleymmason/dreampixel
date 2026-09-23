@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react"
 
 const explore = [["Work", "/portfolio"], ["Services", "/services"], ["About", "/about"], ["Insights", "/insights"], ["Testimonials", "/testimonials"], ["Dictionary", "/glossary/"], ["Contact", "/contact"]]
 const services = [["Web Design", "/services/web-design"], ["Development", "/services/website-development"], ["E-commerce", "/services/ecommerce"], ["SEO", "/services/seo"], ["Local SEO", "/services/local-seo"], ["Maintenance", "/services/website-maintenance"]]
+const COPYRIGHT_YEAR = "2026"
 
 export function Footer() {
   return <footer className="border-t border-border bg-card text-foreground">
@@ -20,7 +21,7 @@ export function Footer() {
         <div><p className="eyebrow mb-5 text-accent">Services</p><div className="flex flex-col items-start gap-3">{services.map(([label, href]) => <Link key={label} href={href} className="footer-link">{label}</Link>)}</div></div>
         <div><p className="eyebrow mb-5 text-accent">Connect</p><a href="mailto:info@dreampixel.co.uk" className="footer-link inline-flex items-center gap-2">Email us <ArrowUpRight aria-hidden="true" /></a><p className="mt-5 max-w-[14rem] text-sm leading-6 text-muted-foreground">Good conversations start with hello.</p></div>
       </div>
-      <div className="mt-16 flex flex-col gap-4 border-t border-border pt-5 text-xs uppercase tracking-[0.14em] text-muted-foreground md:flex-row md:items-center md:justify-between"><span>© {new Date().getFullYear()} Dream Pixel</span><div className="flex gap-5"><Link href="/privacy-policy" className="footer-link">Privacy</Link><Link href="/terms-of-service" className="footer-link">Terms</Link><Link href="/accessibility" className="footer-link">Accessibility</Link></div></div>
+      <div className="mt-16 flex flex-col gap-4 border-t border-border pt-5 text-xs uppercase tracking-[0.14em] text-muted-foreground md:flex-row md:items-center md:justify-between"><span>© {COPYRIGHT_YEAR} Dream Pixel</span><div className="flex gap-5"><Link href="/privacy-policy" className="footer-link">Privacy</Link><Link href="/terms-of-service" className="footer-link">Terms</Link><Link href="/accessibility" className="footer-link">Accessibility</Link></div></div>
     </div>
   </footer>
 }
