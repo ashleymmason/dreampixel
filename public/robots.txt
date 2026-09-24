@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://dreampixel.co.uk/sitemap.xml
+Sitemap: https://www.dreampixel.co.uk/sitemap.xml

@@ -7,8 +7,8 @@ import { glossaryCategories, glossaryTerms } from "@/lib/glossary"
 export const metadata: Metadata = {
   title: "Digital Dictionary | Web Design, SEO & Digital Terms",
   description: "Web design, SEO, development and digital marketing terms explained in plain English. Explore the Dream Pixel Digital Dictionary.",
-  alternates: { canonical: "/glossary/" },
-  openGraph: { title: "Digital Dictionary | Dream Pixel", description: "Digital terms explained in plain English, without the agency waffle.", url: "/glossary/" },
+  alternates: { canonical: "/glossary" },
+  openGraph: { title: "Digital Dictionary | Dream Pixel", description: "Digital terms explained in plain English, without the agency waffle.", url: "/glossary" },
 }
 
 const categoryDescriptions: Record<(typeof glossaryCategories)[number], string> = {
@@ -20,8 +20,8 @@ const categoryDescriptions: Record<(typeof glossaryCategories)[number], string> 
 }
 
 export default function GlossaryPage() {
-  const dictionarySchema = { "@context": "https://schema.org", "@type": "DefinedTermSet", name: "The Digital Dictionary", description: "Digital terms explained in plain English by Dream Pixel.", url: "https://www.dreampixel.co.uk/glossary/", hasDefinedTerm: glossaryTerms.map((term) => ({ "@type": "DefinedTerm", name: term.term, description: term.definition, url: `https://www.dreampixel.co.uk/glossary/#${term.slug}` })) }
-  const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.dreampixel.co.uk/" }, { "@type": "ListItem", position: 2, name: "The Digital Dictionary", item: "https://www.dreampixel.co.uk/glossary/" }] }
+  const dictionarySchema = { "@context": "https://schema.org", "@type": "DefinedTermSet", name: "The Digital Dictionary", description: "Digital terms explained in plain English by Dream Pixel.", url: "https://www.dreampixel.co.uk/glossary", hasDefinedTerm: glossaryTerms.map((term) => ({ "@type": "DefinedTerm", name: term.term, description: term.definition, url: `https://www.dreampixel.co.uk/glossary#${term.slug}` })) }
+  const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.dreampixel.co.uk/" }, { "@type": "ListItem", position: 2, name: "The Digital Dictionary", item: "https://www.dreampixel.co.uk/glossary" }] }
 
   return <div className="bg-background text-foreground">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(dictionarySchema) }} />

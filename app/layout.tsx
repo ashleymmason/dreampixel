@@ -79,7 +79,6 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon.ico" }],
   },
   manifest: "/site.webmanifest",
-  generator: "v0.app",
 }
 
 export const viewport: Viewport = {

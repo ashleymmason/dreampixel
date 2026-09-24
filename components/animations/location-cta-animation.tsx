@@ -22,7 +22,7 @@ export default function LocationCTAAnimation() {
             <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
             <div className="w-2 h-2 rounded-full bg-green-400"></div>
           </div>
-          <div className="mx-auto bg-white rounded-sm text-[6px] px-2">www.yourbusiness.com</div>
+          <div className="mx-auto bg-white rounded-sm text-[6px] px-2">www.dreampixel.co.uk</div>
         </div>
         <div className="p-2">
           <div className="w-full h-4 bg-gradient-to-r from-purple-200 to-purple-300 rounded-sm mb-2"></div>

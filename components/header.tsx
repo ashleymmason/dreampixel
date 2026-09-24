@@ -103,7 +103,7 @@ export function Header() {
           </div>
           {primaryLinks.slice(1).map(([label, href]) => <Link key={label} href={href} className="nav-link">{label}</Link>)}
           <Link href="/testimonials" className="nav-link">Testimonials</Link>
-  <Link href="/glossary/" className="nav-link">Dictionary</Link>
+  <Link href="/glossary" className="nav-link">Dictionary</Link>
         </nav>
         <Link href="/contact" className="button-primary hidden lg:inline-flex" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
         <button ref={menuButtonRef} type="button" className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <span className="flex flex-col gap-1.5" aria-hidden="true"><span className="block h-px w-5 bg-current" /><span className="block h-px w-5 bg-current" /></span>}</button>
@@ -116,7 +116,7 @@ export function Header() {
           <Link href="/about" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>About</Link>
           <Link href="/insights" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Insights</Link>
           <Link href="/testimonials" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Testimonials</Link>
-  <Link href="/glossary/" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Dictionary</Link>
+  <Link href="/glossary" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Dictionary</Link>
           <Link href="/contact" className="button-primary mt-2 w-full justify-between" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
         </nav>
       </div>
