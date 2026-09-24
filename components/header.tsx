@@ -84,7 +84,7 @@ export function Header() {
             <button type="button" className="nav-link inline-flex items-center gap-1" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>
               Services <ChevronDown className={cn("size-3 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" />
             </button>
-            <div className={cn("absolute right-0 top-full mt-5 w-[56rem] border border-border bg-card p-6 shadow-2xl transition-all duration-200", servicesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0")}>
+            <div className={cn("absolute right-0 top-full mt-5 w-[56rem] max-w-[calc(100vw-2rem)] translate-x-[12rem] border border-border bg-card p-6 shadow-2xl transition-all duration-200 xl:translate-x-0", servicesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0")}>
               <div className="grid grid-cols-4 gap-6">
                 {serviceGroups.map((group) => <div key={group.label}><p className="eyebrow mb-4 text-primary">{group.label}</p><div className="flex flex-col gap-3">{group.items.map(([label, href]) => <Link key={label} href={href} className="text-sm text-muted-foreground transition-colors hover:text-foreground" onClick={closeMenu}>{label}</Link>)}</div></div>)}
               </div>
