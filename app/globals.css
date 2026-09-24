@@ -26,7 +26,8 @@
     --radius: 0rem;
   }
   * { @apply border-border; }
-  html { @apply bg-background; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  html { @apply bg-background; overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { overflow-x: hidden; }
 :where([id]) { scroll-margin-top: 5rem; }
   body { @apply bg-background text-foreground; font-family: var(--font-inter), sans-serif; }
   ::selection { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
