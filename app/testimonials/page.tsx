@@ -38,11 +38,11 @@ const testimonials = [
 export const metadata = {
   title: "Client Testimonials | Dream Pixel Devon",
   description: "Read what businesses and creative professionals say about working with Dream Pixel on websites, branding, SEO and digital growth.",
-  alternates: { canonical: "https://dreampixel.co.uk/testimonials" },
+  alternates: { canonical: "https://www.dreampixel.co.uk/testimonials" },
   openGraph: {
     title: "Client Testimonials | Dream Pixel Devon",
     description: "Read what businesses and creative professionals say about working with Dream Pixel.",
-    url: "https://dreampixel.co.uk/testimonials",
+    url: "https://www.dreampixel.co.uk/testimonials",
     type: "website",
   },
 }
@@ -52,13 +52,13 @@ export default function TestimonialsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Dream Pixel client testimonials",
-    url: "https://dreampixel.co.uk/testimonials",
+    url: "https://www.dreampixel.co.uk/testimonials",
     description: metadata.description,
     mainEntity: testimonials.map((testimonial) => ({
       "@type": "Review",
       author: { "@type": "Person", name: testimonial.name },
       reviewBody: testimonial.quote,
-      itemReviewed: { "@type": "ProfessionalService", name: "Dream Pixel", url: "https://dreampixel.co.uk" },
+      itemReviewed: { "@type": "ProfessionalService", name: "Dream Pixel", url: "https://www.dreampixel.co.uk" },
     })),
   }
 

@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://dreampixel.co.uk"),
+  metadataBase: new URL("https://www.dreampixel.co.uk"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://dreampixel.co.uk",
+    url: "https://www.dreampixel.co.uk",
     siteName: "Dream Pixel",
     title: "Dream Pixel | Web Design & Digital Marketing in Devon",
     description:
@@ -79,7 +79,6 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon.ico" }],
   },
   manifest: "/site.webmanifest",
-  generator: "v0.app",
 }
 
 export const viewport: Viewport = {

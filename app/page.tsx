@@ -26,8 +26,8 @@ const process = [
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Organization", "@id": "https://dreampixel.co.uk/#organization", name: "Dream Pixel", url: "https://dreampixel.co.uk", logo: "https://dreampixel.co.uk/images/dream-pixel-logo-white.png", email: "hello@dreampixel.co.uk", address: { "@type": "PostalAddress", addressLocality: "Barnstaple", addressRegion: "Devon", addressCountry: "GB" } },
-    { "@type": "WebSite", "@id": "https://dreampixel.co.uk/#website", url: "https://dreampixel.co.uk", name: "Dream Pixel", publisher: { "@id": "https://dreampixel.co.uk/#organization" } },
+    { "@type": "Organization", "@id": "https://www.dreampixel.co.uk/#organization", name: "Dream Pixel", url: "https://www.dreampixel.co.uk", logo: "https://www.dreampixel.co.uk/images/dream-pixel-logo-white.png", email: "hello@dreampixel.co.uk", address: { "@type": "PostalAddress", addressLocality: "Barnstaple", addressRegion: "Devon", addressCountry: "GB" } },
+    { "@type": "WebSite", "@id": "https://www.dreampixel.co.uk/#website", url: "https://www.dreampixel.co.uk", name: "Dream Pixel", publisher: { "@id": "https://www.dreampixel.co.uk/#organization" } },
   ],
 }
 

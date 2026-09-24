@@ -29,8 +29,8 @@ export default function PPCAnimation() {
             transition={{ delay: 0.3, duration: 0.5 }}
           >
             <div className="text-xs text-green-600 font-medium mb-1">Ad</div>
-            <div className="h-4 w-full font-bold text-gray-800">Your Business Name</div>
-            <div className="h-3 w-3/4 text-xs text-green-600 mt-1">www.yourbusiness.com</div>
+            <div className="h-4 w-full font-bold text-gray-800">Dream Pixel</div>
+            <div className="h-3 w-3/4 text-xs text-green-600 mt-1">www.dreampixel.co.uk</div>
             <div className="h-3 w-full text-xs text-gray-500 mt-2">
               Professional services tailored to your needs. Get a free quote today!
             </div>
