@@ -4,8 +4,8 @@ import Image from "next/image"
 import { ArrowUpRight, Check } from "lucide-react"
 
 export function LocationPage({ location }: { location: Location }) {
-  const pageUrl = `https://dreampixel.co.uk/web-design-${location.slug}`
-  const structuredData = { "@context": "https://schema.org", "@graph": [{ "@type": "ProfessionalService", name: `Dream Pixel Web Design ${location.name}`, url: pageUrl, image: `https://dreampixel.co.uk${location.image}`, areaServed: { "@type": "AdministrativeArea", name: location.name, containedInPlace: { "@type": "AdministrativeArea", name: location.region } }, serviceType: ["Web design", "Website development", "SEO"], provider: { "@type": "LocalBusiness", name: "Dream Pixel", url: "https://dreampixel.co.uk" } }, ...(location.faq?.length ? [{ "@type": "FAQPage", mainEntity: location.faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) }] : [])] }
+  const pageUrl = `https://www.dreampixel.co.uk/web-design-${location.slug}`
+  const structuredData = { "@context": "https://schema.org", "@graph": [{ "@type": "ProfessionalService", name: `Dream Pixel Web Design ${location.name}`, url: pageUrl, image: `https://www.dreampixel.co.uk${location.image}`, areaServed: { "@type": "AdministrativeArea", name: location.name, containedInPlace: { "@type": "AdministrativeArea", name: location.region } }, serviceType: ["Web design", "Website development", "SEO"], provider: { "@type": "LocalBusiness", name: "Dream Pixel", url: "https://www.dreampixel.co.uk" } }, ...(location.faq?.length ? [{ "@type": "FAQPage", mainEntity: location.faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) }] : [])] }
   return <main className="overflow-hidden bg-background"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
     <section className="relative border-b border-border px-6 py-24 md:px-12 md:py-36">
       <div className="container grid gap-14 lg:grid-cols-[1fr_.85fr] lg:items-end">
