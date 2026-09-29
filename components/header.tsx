@@ -7,6 +7,7 @@ import { ArrowUpRight, ChevronDown, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const locations = [["Barnstaple", "/web-design-barnstaple"], ["North Devon", "/web-design-north-devon"], ["Bideford", "/web-design-bideford"], ["Exeter", "/web-design-exeter"], ["Plymouth", "/web-design-plymouth"], ["Torquay", "/web-design-torquay"]] as const
+const resources = [["Insights", "/insights"], ["Dictionary", "/glossary"]] as const
 
 const primaryLinks = [
   ["Work", "/portfolio"],
@@ -24,6 +25,7 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [locationsOpen, setLocationsOpen] = useState(false)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const menuPanelRef = useRef<HTMLDivElement>(null)
@@ -44,6 +46,7 @@ export function Header() {
     setOpen(false)
     setServicesOpen(false)
     setLocationsOpen(false)
+    setResourcesOpen(false)
     requestAnimationFrame(() => menuButtonRef.current?.focus())
   }
 
@@ -80,6 +83,7 @@ export function Header() {
         </Link>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
           <Link href="/portfolio" className="nav-link">Work</Link>
+          <Link href="/about" className="nav-link">About</Link>
           <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
             <button type="button" className="nav-link inline-flex items-center gap-1" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>
               Services <ChevronDown className={cn("size-3 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" />
@@ -101,9 +105,11 @@ export function Header() {
               <Link href="/locations" className="link-arrow mt-7 inline-flex border-t border-border pt-4 text-sm font-semibold" onClick={closeMenu}>View all locations <ArrowUpRight aria-hidden="true" /></Link>
             </div>
           </div>
-          {primaryLinks.slice(1).map(([label, href]) => <Link key={label} href={href} className="nav-link">{label}</Link>)}
           <Link href="/testimonials" className="nav-link">Testimonials</Link>
-  <Link href="/glossary" className="nav-link">Dictionary</Link>
+          <div className="relative" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
+            <button type="button" className="nav-link inline-flex items-center gap-1" aria-expanded={resourcesOpen} onClick={() => setResourcesOpen(!resourcesOpen)}>Resources <ChevronDown className={cn("size-3 transition-transform", resourcesOpen && "rotate-180")} aria-hidden="true" /></button>
+            <div className={cn("absolute right-0 top-full mt-5 w-64 border border-border bg-card p-6 shadow-2xl transition-all duration-200", resourcesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0")}><p className="eyebrow mb-4 text-primary">Useful things</p><div className="flex flex-col gap-3">{resources.map(([label, href]) => <Link key={label} href={href} className="text-sm text-muted-foreground transition-colors hover:text-foreground" onClick={closeMenu}>{label}</Link>)}</div></div>
+          </div>
         </nav>
         <Link href="/contact" className="button-primary hidden lg:inline-flex" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
         <button ref={menuButtonRef} type="button" className="inline-flex size-11 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <span className="flex flex-col gap-1.5" aria-hidden="true"><span className="block h-px w-5 bg-current" /><span className="block h-px w-5 bg-current" /></span>}</button>
@@ -111,12 +117,11 @@ export function Header() {
       <div ref={menuPanelRef} id="mobile-navigation" aria-hidden={!open} className={cn("absolute inset-x-0 top-full z-[60] h-[calc(100dvh-4.5rem)] overflow-y-auto bg-[hsl(var(--background))] px-6 pb-8 pt-6 transition-[opacity,visibility] duration-300 lg:hidden", open ? "visible opacity-100" : "invisible opacity-0")}>
         <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
           <Link href="/portfolio" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Work</Link>
+          <Link href="/about" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>About</Link>
           <div className="border-y border-border py-4"><button type="button" className="flex w-full items-center justify-between font-display text-4xl leading-none tracking-[-0.06em]" aria-expanded={servicesOpen} onClick={() => setServicesOpen(!servicesOpen)}>Services <ChevronDown className={cn("size-5 transition-transform", servicesOpen && "rotate-180")} aria-hidden="true" /></button>{servicesOpen && <div className="mt-4 grid gap-4 pl-1"><p className="eyebrow text-primary">Websites · Growth · Ongoing</p><div className="grid grid-cols-2 gap-x-4 gap-y-2">{serviceGroups.flatMap((group) => group.items).map(([label, href]) => <Link key={label} href={href} className="text-base leading-6 text-muted-foreground" onClick={closeMenu}>{label}</Link>)}</div><Link href="/services" className="link-arrow text-sm font-semibold" onClick={closeMenu}>View all services <ArrowUpRight aria-hidden="true" /></Link></div>}</div>
           <div className="border-b border-border pb-4"><button type="button" className="flex w-full items-center justify-between font-display text-4xl leading-none tracking-[-0.06em]" aria-expanded={locationsOpen} onClick={() => setLocationsOpen(!locationsOpen)}>Locations <ChevronDown className={cn("size-5 transition-transform", locationsOpen && "rotate-180")} aria-hidden="true" /></button>{locationsOpen && <div className="mt-4 grid gap-3 pl-1"><p className="eyebrow text-primary">Web design across Devon</p>{locations.map(([label, href]) => <Link key={label} href={href} className="text-base leading-6 text-muted-foreground" onClick={closeMenu}>{label}</Link>)}<Link href="/locations" className="link-arrow text-sm font-semibold" onClick={closeMenu}>View all locations <ArrowUpRight aria-hidden="true" /></Link></div>}</div>
-          <Link href="/about" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>About</Link>
-          <Link href="/insights" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Insights</Link>
           <Link href="/testimonials" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Testimonials</Link>
-  <Link href="/glossary" className="font-display text-4xl leading-none tracking-[-0.06em]" onClick={closeMenu}>Dictionary</Link>
+          <div className="border-b border-border pb-4"><button type="button" className="flex w-full items-center justify-between font-display text-4xl leading-none tracking-[-0.06em]" aria-expanded={resourcesOpen} onClick={() => setResourcesOpen(!resourcesOpen)}>Resources <ChevronDown className={cn("size-5 transition-transform", resourcesOpen && "rotate-180")} aria-hidden="true" /></button>{resourcesOpen && <div className="mt-4 grid gap-3 pl-1"><p className="eyebrow text-primary">Useful things</p>{resources.map(([label, href]) => <Link key={label} href={href} className="text-base leading-6 text-muted-foreground" onClick={closeMenu}>{label}</Link>)}</div>}</div>
           <Link href="/contact" className="button-primary mt-2 w-full justify-between" onClick={closeMenu}>Start a project <ArrowUpRight data-icon="inline-end" aria-hidden="true" /></Link>
         </nav>
       </div>
