@@ -2,6 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { FounderVisual } from "@/components/founder-visual"
 import { ArrowUpRight, Check, MoveRight, Sparkles } from "lucide-react"
+import ContactForm from "@/components/contact-form"
+import { insights } from "@/lib/insights"
 
 const projects = [
   { name: "RCS Tuning", industry: "Automotive", service: "E-commerce · Performance", description: "A sharper digital home for a specialist tuning business ready to move faster.", image: "/images/portfolio/rcs-tuning.png", href: "/work/rcs-tuning", tone: "bg-[hsl(var(--primary))]" },
@@ -31,7 +33,15 @@ const schema = {
   ],
 }
 
+const faqs = [
+  ["How much does a website cost?", "Every project is different, but we will give you a clear scope and honest quote before work begins."],
+  ["How long does a website take to build?", "A focused small-business website can often move from discovery to launch in a few weeks, depending on content and feedback."],
+  ["Can you help with SEO after launch?", "Yes. We can support technical SEO, content, local search and ongoing optimisation after your website is live."],
+  ["Do you work with businesses outside Devon?", "Yes. Dream Pixel is based in Barnstaple, Devon, and works with ambitious businesses wherever they are."],
+]
+
 export default function Home() {
+  const recentInsights = [...insights].sort((a, b) => b.isoDate.localeCompare(a.isoDate)).slice(0, 3)
   return (
     <div className="overflow-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -63,7 +73,13 @@ export default function Home() {
 
       <section className="container py-24 md:py-36"><div className="grid gap-12 md:grid-cols-[1fr_1fr] md:items-center"><FounderVisual /><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">About Dream Pixel</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Small studio.<br /><span className="text-muted-foreground">Big care.</span></h2><p className="mt-8 max-w-lg text-lg leading-7 text-muted-foreground">We are an independent digital studio in Barnstaple, Devon. Close enough to know the local landscape, ambitious enough to build for anywhere.</p><Link href="/about" className="mt-8 inline-flex items-center gap-3 border-b border-foreground pb-3 text-sm font-semibold uppercase tracking-[0.16em] hover:text-[hsl(var(--primary))]">Meet Dream Pixel <ArrowUpRight aria-hidden="true" /></Link></div></div></section>
 
-      <section className="bg-[hsl(var(--accent))] px-6 py-24 text-foreground md:py-36"><div className="mx-auto max-w-7xl"><p className="mb-7 text-sm uppercase tracking-[0.18em]">Ready when you are</p><h2 className="max-w-5xl font-display text-7xl leading-[0.82] tracking-[-0.08em] md:text-[9rem]">Have a project<br />in mind?</h2><p className="mt-10 max-w-md text-lg leading-7">Tell us what you&apos;re building. We&apos;ll help you figure out what comes next.</p><Link href="/contact" className="mt-10 inline-flex items-center gap-3 bg-foreground px-5 py-3 text-sm font-semibold text-background transition-transform hover:-translate-y-1">Start a project <ArrowUpRight aria-hidden="true" /></Link></div></section>
+      <section className="container py-24 md:py-36"><div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">Recent articles</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Useful things<br /><span className="text-muted-foreground">to know.</span></h2></div><Link href="/insights" className="link-arrow text-sm font-semibold">View all insights <ArrowUpRight aria-hidden="true" /></Link></div><div className="grid gap-8 md:grid-cols-3">{recentInsights.map((article) => <Link key={article.slug} href={`/insights/${article.slug}`} className="group border-t border-border pt-5"><p className="eyebrow text-[hsl(var(--primary))]">{article.category} / {article.date}</p><h3 className="mt-5 font-display text-3xl leading-none tracking-[-0.05em] transition-colors group-hover:text-[hsl(var(--primary))]">{article.title}</h3><p className="mt-4 text-sm leading-6 text-muted-foreground">{article.excerpt}</p><span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">Read article <ArrowUpRight className="size-4" aria-hidden="true" /></span></Link>)}</div></section>
+
+      <section className="container py-24 md:py-36"><div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--accent))]">Frequently asked</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Questions,<br /><span className="text-muted-foreground">answered.</span></h2></div><div className="border-t border-border">{faqs.map(([question, answer]) => <details key={question} className="group border-b border-border py-6"><summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl tracking-[-0.04em] [&::-webkit-details-marker]:hidden"><span>{question}</span><span className="text-[hsl(var(--primary))] transition-transform group-open:rotate-45">+</span></summary><p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">{answer}</p></details>)}</div></div></section>
+
+      <section className="bg-secondary py-24 text-secondary-foreground md:py-32"><div className="container grid gap-12 md:grid-cols-[0.65fr_1.35fr] md:items-start"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">Start a conversation</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Tell us what<br />you&apos;re building.</h2><p className="mt-8 max-w-md text-lg leading-7 text-muted-foreground">A rough idea is more than enough. We&apos;ll help you figure out what comes next.</p></div><ContactForm /></div></section>
+
+
     </div>
   )
 }
