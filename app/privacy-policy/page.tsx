@@ -147,8 +147,8 @@ export default function PrivacyPolicyPage() {
           </ul>
           <p className="mb-4">
             To exercise these rights, please contact us at{" "}
-            <a href="mailto:privacy@dreampixel.co.uk" className="text-purple-600 hover:underline">
-              privacy@dreampixel.co.uk
+            <a href="mailto:info@dreampixel.co.uk" className="text-purple-600 hover:underline">
+              info@dreampixel.co.uk
             </a>
           </p>
         </section>

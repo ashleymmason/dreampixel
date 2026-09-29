@@ -222,13 +222,6 @@ export default function TermsOfServicePage() {
                 info@dreampixel.co.uk
               </a>
             </p>
-            <p>
-              Phone:{" "}
-              <a href="tel:+447123456789" className="text-purple-600 hover:underline">
-                +44 7123 456789
-              </a>
-            </p>
-            <p>Address: Devon, United Kingdom</p>
           </div>
         </section>
 
