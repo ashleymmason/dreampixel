@@ -127,12 +127,12 @@
 .contact-input { width: 100%; border: 1px solid hsl(var(--border)); background: hsl(var(--background)); color: hsl(var(--foreground)); padding: 0.9rem 1rem; font-size: 0.95rem; line-height: 1.5; outline: none; transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease; }
  .contact-form-dark { color: hsl(var(--background)); }
  .contact-form-dark label, .contact-form-dark legend { color: hsl(var(--background) / 0.7); }
- .contact-form-dark .contact-input { border-color: hsl(var(--background) / 0.28); background: hsl(var(--background) / 0.08); color: hsl(var(--background)); }
+ .contact-form-dark .contact-input { border-color: hsl(var(--background) / 0.28); background: transparent; color: hsl(var(--background)); }
  .contact-form-dark .contact-input::placeholder { color: hsl(var(--background) / 0.5); }
  .contact-form-dark .contact-input:hover { border-color: hsl(var(--primary)); background: hsl(var(--background) / 0.12); }
  .contact-form-dark .contact-input:focus { border-color: hsl(var(--primary)); background: hsl(var(--background) / 0.14); }
  .contact-form-dark .choice { border-color: hsl(var(--background) / 0.28); color: hsl(var(--background) / 0.7); }
- .contact-form-dark .choice:hover, .contact-form-dark .choice-active { border-color: hsl(var(--primary)); background: hsl(var(--background) / 0.1); color: hsl(var(--background)); }
+ .contact-form-dark .choice:hover, .contact-form-dark .choice-active { border-color: hsl(var(--primary)); background: hsl(var(--background) / 0.1); color: hsl(var(--background)) !important; }
  .contact-form-dark > div:last-child { border-color: hsl(var(--background) / 0.2); }
  .contact-form-dark > div:last-child p { color: hsl(var(--background) / 0.6); }
 .contact-input::placeholder { color: hsl(var(--muted-foreground)); }
