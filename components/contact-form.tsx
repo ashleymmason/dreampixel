@@ -27,7 +27,7 @@ function Field({ label, htmlFor, optional, children }: { label: string; htmlFor?
   return <div className="flex flex-col gap-2"><label className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground" htmlFor={htmlFor}>{label} {optional && <span className="text-muted-foreground/60">(optional)</span>}</label>{children}</div>
 }
 
-export default function ContactForm() {
+export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const [form, setForm] = useState(initialState)
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
   const [error, setError] = useState("")
@@ -50,7 +50,7 @@ export default function ContactForm() {
 
   if (status === "success") return <div aria-live="polite" className="flex min-h-[28rem] flex-col justify-center border border-accent/40 bg-accent/10 p-8 md:p-12"><span className="mb-8 flex size-12 items-center justify-center bg-accent text-accent-foreground"><Check className="size-6" /></span><p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-accent">Enquiry received</p><h3 className="font-display text-5xl font-medium leading-none tracking-[-0.06em] text-foreground md:text-7xl">Nice. We&apos;ve got it.</h3><p className="mt-6 max-w-md leading-7 text-muted-foreground">Thanks for sending over the details. We&apos;ll take a look and get back to you shortly.</p><div className="mt-10 flex flex-wrap gap-6 font-mono text-xs uppercase tracking-[0.18em]"><a className="text-primary hover:text-accent" href="/">Back to home</a><a className="text-primary hover:text-accent" href="/portfolio">View our work</a></div></div>
 
-  return <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+  return <form className={`contact-form ${dark ? "contact-form-dark" : ""} flex flex-col gap-8`} onSubmit={handleSubmit}>
     <div className="grid gap-6 md:grid-cols-2"><Field label="Name *" htmlFor="name"><input autoComplete="name" className="contact-input" id="name" name="name" onChange={(e) => update("name", e.target.value)} required value={form.name} /></Field><Field label="Email *" htmlFor="email"><input autoComplete="email" className="contact-input" id="email" name="email" onChange={(e) => update("email", e.target.value)} required type="email" value={form.email} /></Field></div>
     <Field label="Company" htmlFor="company" optional><input autoComplete="organization" className="contact-input" id="company" name="company" onChange={(e) => update("company", e.target.value)} value={form.company} /></Field>
     <fieldset><legend className="mb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">What can we help with? *</legend><div className="grid gap-3 sm:grid-cols-2">{serviceOptions.map((service) => <label className={`choice ${form.services.includes(service) ? "choice-active" : ""}`} key={service}><input checked={form.services.includes(service)} name="services" onChange={() => toggleService(service)} type="checkbox" /><span>{service}</span></label>)}</div></fieldset>
