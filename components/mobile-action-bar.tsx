@@ -6,7 +6,7 @@ const whatsappUrl = "https://wa.me/447714028676?text=Hi%20Dream%20Pixel%2C%20I%2
 
 export function MobileActionBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] lg:hidden" aria-label="Quick contact actions">
+    <div className="mobile-action-bar" aria-label="Quick contact actions">
       <a
         href={whatsappUrl}
         target="_blank"
