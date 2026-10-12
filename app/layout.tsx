@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import CookieConsent from "@/components/cookie-consent"
+import MobileActionBar from "@/components/mobile-action-bar"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -150,8 +151,9 @@ export default function RootLayout({
             <a href="#main-content" className="skip-link">Skip to content</a>
             <Header />
             <main id="main-content" className="flex-1">{children}</main>
-            <Footer />
-            <CookieConsent />
+      <Footer />
+      <MobileActionBar />
+      <CookieConsent />
           </div>
         </ThemeProvider>
       </body>
