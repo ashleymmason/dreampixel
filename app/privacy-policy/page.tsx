@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Dream Pixel",
+  title: "Privacy Policy",
+  alternates: { canonical: "/privacy-policy" },
   description:
     "Learn how Dream Pixel collects, uses, and protects your personal information. Our comprehensive privacy policy covers data protection and your rights.",
   robots: "index, follow",

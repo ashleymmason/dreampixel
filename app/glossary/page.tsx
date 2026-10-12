@@ -5,7 +5,7 @@ import GlossaryBrowser from "@/components/glossary-browser"
 import { glossaryCategories, glossaryTerms } from "@/lib/glossary"
 
 export const metadata: Metadata = {
-  title: "Digital Dictionary | Web Design, SEO & Digital Terms",
+  title: "Web Design & SEO Glossary",
   description: "Web design, SEO, development and digital marketing terms explained in plain English. Explore the Dream Pixel Digital Dictionary.",
   alternates: { canonical: "/glossary" },
   openGraph: { title: "Digital Dictionary | Dream Pixel", description: "Digital terms explained in plain English, without the agency waffle.", url: "/glossary" },

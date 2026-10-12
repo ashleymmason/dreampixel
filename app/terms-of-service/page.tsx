@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Dream Pixel",
+  title: "Terms of Service",
+  alternates: { canonical: "/terms-of-service" },
   description:
     "Read Dream Pixel's terms of service covering web design, hosting, and digital marketing services. Understand our policies and your rights as a client.",
   robots: "index, follow",

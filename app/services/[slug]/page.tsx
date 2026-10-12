@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const service = getService(slug)
   if (!service) return {}
-  return { title: service.shortTitle, description: service.description, alternates: { canonical: `/services/${service.slug}` }, openGraph: { title: `${service.shortTitle} | Dream Pixel`, description: service.description, type: "website" } }
+  return { title: ({ content: "Website Content & Copywriting in Devon", ecommerce: "E-commerce Web Design in Devon", "digital-pr": "Digital PR & Link Building in Devon" } as Record<string, string>)[service.slug] ?? `${service.shortTitle} in Barnstaple & North Devon`, description: service.description, alternates: { canonical: `/services/${service.slug}` }, openGraph: { title: `${service.shortTitle} | Dream Pixel`, description: service.description, type: "website" } }
 }
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {

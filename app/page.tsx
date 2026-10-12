@@ -1,9 +1,14 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { FounderVisual } from "@/components/founder-visual"
 import { ArrowUpRight, Check, MoveRight, Sparkles } from "lucide-react"
 import ContactForm from "@/components/contact-form"
 import { insights } from "@/lib/insights"
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
 
 const projects = [
   { name: "RCS Tuning", industry: "Automotive", service: "E-commerce · Performance", description: "A sharper digital home for a specialist tuning business ready to move faster.", image: "/images/portfolio/rcs-tuning.png", href: "/work/rcs-tuning", tone: "bg-[hsl(var(--primary))]" },
@@ -25,20 +30,25 @@ const process = [
   ["04", "Launch & Grow", "We launch with confidence, then keep improving what matters."],
 ]
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    { "@type": "Organization", "@id": "https://www.dreampixel.co.uk/#organization", name: "Dream Pixel", url: "https://www.dreampixel.co.uk", logo: "https://www.dreampixel.co.uk/images/dream-pixel-logo-white.png", email: "hello@dreampixel.co.uk", address: { "@type": "PostalAddress", addressLocality: "Barnstaple", addressRegion: "Devon", addressCountry: "GB" } },
-    { "@type": "WebSite", "@id": "https://www.dreampixel.co.uk/#website", url: "https://www.dreampixel.co.uk", name: "Dream Pixel", publisher: { "@id": "https://www.dreampixel.co.uk/#organization" } },
-  ],
-}
-
 const faqs = [
+  ["Where is Dream Pixel based?", "Dream Pixel is a web design studio in Barnstaple, North Devon. We work with businesses in Barnstaple, Bideford and across North Devon, in person and remotely."],
+  ["Do you offer web design in Barnstaple and Bideford?", "Yes. Barnstaple is our home base and Bideford is on our doorstep, so we can meet locally to plan your website, review progress and launch it with confidence."],
   ["How much does a website cost?", "Every project is different, but we will give you a clear scope and honest quote before work begins."],
   ["How long does a website take to build?", "A focused small-business website can often move from discovery to launch in a few weeks, depending on content and feedback."],
   ["Can you help with SEO after launch?", "Yes. We can support technical SEO, content, local search and ongoing optimisation after your website is live."],
   ["Do you work with businesses outside Devon?", "Yes. Dream Pixel is based in Barnstaple, Devon, and works with ambitious businesses wherever they are."],
 ]
+
+const localLinks = [["Web design Barnstaple", "/web-design-barnstaple"], ["Web design Bideford", "/web-design-bideford"], ["Web design North Devon", "/web-design-north-devon"], ["Web design Exeter", "/web-design-exeter"], ["Web design Plymouth", "/web-design-plymouth"], ["Web design Torquay", "/web-design-torquay"]]
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": ["Organization", "ProfessionalService"], "@id": "https://www.dreampixel.co.uk/#organization", name: "Dream Pixel", description: "Web design studio in Barnstaple, North Devon, offering web design, website development, e-commerce and SEO.", url: "https://www.dreampixel.co.uk", logo: "https://www.dreampixel.co.uk/images/dream-pixel-logo-white.png", image: "https://www.dreampixel.co.uk/images/dream-pixel-social-default.jpeg", email: "hello@dreampixel.co.uk", address: { "@type": "PostalAddress", addressLocality: "Barnstaple", addressRegion: "Devon", addressCountry: "GB" }, areaServed: ["Barnstaple", "Bideford", "North Devon", "Exeter", "Plymouth", "Torquay"].map((name) => ({ "@type": "Place", name })), knowsAbout: ["Web design", "Website development", "E-commerce", "Local SEO"] },
+    { "@type": "WebSite", "@id": "https://www.dreampixel.co.uk/#website", url: "https://www.dreampixel.co.uk", name: "Dream Pixel", publisher: { "@id": "https://www.dreampixel.co.uk/#organization" } },
+    { "@type": "FAQPage", mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
+  ],
+}
 
 export default function Home() {
   const recentInsights = [...insights].sort((a, b) => b.isoDate.localeCompare(a.isoDate)).slice(0, 3)
@@ -48,8 +58,8 @@ export default function Home() {
       <section className="relative isolate bg-background text-foreground">
         <div className="container flex min-h-0 flex-col justify-between pb-10 pt-12 md:min-h-[calc(100svh-5rem)] md:pt-20">
           <div className="relative py-12 md:py-20">
-            <h1 className="max-w-6xl font-display text-[clamp(3.5rem,9.6vw,10rem)] font-medium leading-[0.83] tracking-[-0.08em] text-balance">Dream Pixel builds websites that are <span className="text-[hsl(var(--primary))]">seen,</span><br />remembered <span className="text-[hsl(var(--accent))]">and found.</span></h1>
-            <p className="mt-8 max-w-sm text-sm leading-6 text-foreground/65">Dream Pixel is an independent digital studio in Barnstaple, Devon. We design and build high-performance websites, e-commerce experiences and SEO foundations that help ambitious businesses explain their value, earn trust and get found.</p>
+            <h1 className="max-w-6xl font-display text-[clamp(3.5rem,9.6vw,10rem)] font-medium leading-[0.83] tracking-[-0.08em] text-balance">Barnstaple web design that is <span className="text-[hsl(var(--primary))]">seen,</span><br />remembered <span className="text-[hsl(var(--accent))]">and found.</span></h1>
+            <p className="mt-8 max-w-sm text-sm leading-6 text-foreground/65">Dream Pixel is a web design studio in Barnstaple, North Devon. We design and build high-performance websites, e-commerce experiences and SEO foundations that help local businesses explain their value, earn trust and get found.</p>
             <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center"><Link href="/contact" className="inline-flex items-center gap-3 bg-[hsl(var(--primary))] px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-1">Start a project <ArrowUpRight aria-hidden="true" /></Link><Link href="/portfolio" className="inline-flex items-center gap-3 text-sm font-semibold text-foreground/75 transition-colors hover:text-[hsl(var(--accent))]">View our work <MoveRight aria-hidden="true" /></Link></div>
           </div>
           <div className="flex items-end justify-between border-t border-background/20 pt-4 text-xs uppercase tracking-[0.18em] text-foreground/50"><span>Design · Development · Growth</span><span>Scroll to explore</span></div>
@@ -64,6 +74,20 @@ export default function Home() {
       <section className="bg-[hsl(var(--primary))] py-24 text-primary-foreground md:py-36"><div className="container grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-end"><p className="text-sm uppercase tracking-[0.18em] text-primary-foreground/70">The Dream Pixel approach</p><div><h2 className="max-w-5xl font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Design that looks good. Technology that works. <span className="text-primary-foreground">SEO that gets you found.</span></h2><p className="mt-10 max-w-xl text-lg leading-7 text-primary-foreground/80">Design, development and search should not pull in different directions. We bring them together from the start, so your website is distinctive, useful and ready to perform.</p></div></div></section>
 
       <section className="container py-24 md:py-36"><div className="mb-14 flex items-end justify-between gap-6"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--accent))]">How we help</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">A better digital<br />foundation.</h2></div></div><div className="grid border-t border-border md:grid-cols-3">{services.map((group) => <Link key={group.title} href={group.href} className="group border-b border-border py-8 md:border-b-0 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"><div className="flex items-start justify-between"><h3 className="font-display text-4xl tracking-[-0.05em]">{group.title}</h3><MoveRight className="transition-transform group-hover:translate-x-2" aria-hidden="true" /></div><p className="mt-3 text-sm text-muted-foreground">{group.intro}</p><ul className="mt-8 flex flex-col gap-3 text-sm">{group.items.map((item) => <li key={item} className="flex items-center gap-2"><Check className="size-4 text-[hsl(var(--accent))]" aria-hidden="true" />{item}</li>)}</ul></Link>)}</div></section>
+
+      <section className="border-y border-border bg-card py-24 md:py-32">
+        <div className="container grid gap-12 md:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">Web design in Barnstaple</p>
+            <h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Local studio.<br /><span className="text-muted-foreground">Local know-how.</span></h2>
+          </div>
+          <div>
+            <p className="max-w-3xl text-lg leading-8 text-muted-foreground">Dream Pixel is based in <Link href="/web-design-barnstaple" className="font-semibold text-foreground underline decoration-[hsl(var(--primary))] underline-offset-4">Barnstaple</Link>, so we understand the businesses, customers and search habits of North Devon first-hand. Whether you need a new website, a redesign, an online shop or help being found on Google, we plan it around how people in your area actually look for you.</p>
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">We work with businesses in Barnstaple and <Link href="/web-design-bideford" className="font-semibold text-foreground underline decoration-[hsl(var(--primary))] underline-offset-4">Bideford</Link>, across <Link href="/web-design-north-devon" className="font-semibold text-foreground underline decoration-[hsl(var(--primary))] underline-offset-4">North Devon</Link>, and for clients in Exeter, Plymouth, Torquay and beyond.</p>
+            <ul className="mt-8 flex flex-wrap gap-3">{localLinks.map(([label, href]) => <li key={href}><Link href={href} className="inline-flex border border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary))]">{label}</Link></li>)}</ul>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-secondary py-24 text-secondary-foreground md:py-32"><div className="container grid gap-12 md:grid-cols-[0.7fr_1.3fr]"><div><p className="text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">No made-up numbers</p><h2 className="mt-5 font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Good work<br />speaks clearly.</h2></div><div className="border-t border-border"><div className="flex gap-5 border-b border-border py-6"><Sparkles className="mt-1 size-5 text-[hsl(var(--accent))]" aria-hidden="true" /><p className="max-w-xl text-lg leading-7">We believe in clear outcomes, honest conversations and websites that make a real difference to the people using them.</p></div><div className="grid gap-5 py-6 text-sm text-muted-foreground md:grid-cols-3"><span>Thoughtful launches</span><span>Better enquiries</span><span>Long-term partnerships</span></div></div></div></section>
 

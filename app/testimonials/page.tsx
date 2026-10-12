@@ -36,7 +36,7 @@ const testimonials = [
 ]
 
 export const metadata = {
-  title: "Client Testimonials | Dream Pixel Devon",
+  title: "Client Testimonials",
   description: "Read what businesses and creative professionals say about working with Dream Pixel on websites, branding, SEO and digital growth.",
   alternates: { canonical: "https://www.dreampixel.co.uk/testimonials" },
   openGraph: {

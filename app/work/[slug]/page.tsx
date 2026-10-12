@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const project = projects[slug as Slug]
   if (!project) return {}
-  return { title: `${project.name} case study — Dream Pixel`, description: project.intro, alternates: { canonical: `/work/${slug}` }, openGraph: { title: `${project.name} case study — Dream Pixel`, description: project.intro, images: [project.image] } }
+  return { title: `${project.name} Website Case Study`, description: project.intro, alternates: { canonical: `/work/${slug}` }, openGraph: { title: `${project.name} case study — Dream Pixel`, description: project.intro, images: [project.image] } }
 }
 
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {

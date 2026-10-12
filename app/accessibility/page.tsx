@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Accessibility | Dream Pixel",
+  title: "Accessibility Statement",
+  alternates: { canonical: "/accessibility" },
   description: "Dream Pixel's commitment to making its website and digital work accessible to as many people as possible.",
 }
 

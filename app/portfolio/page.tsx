@@ -4,8 +4,8 @@ import { ArrowDown, ArrowUpRight } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Selected work and case studies",
-  description: "Explore websites and digital experiences created by Dream Pixel for businesses across Devon and beyond.",
+  title: "Web Design Portfolio & Case Studies",
+  description: "Explore websites and digital experiences created by Dream Pixel, a Barnstaple web design studio, for businesses across North Devon and beyond.",
   alternates: { canonical: "/portfolio" },
 }
 

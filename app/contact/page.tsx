@@ -11,7 +11,7 @@ const steps = [
 ]
 
 export const metadata = {
-  title: "Start a Project | Dream Pixel",
+  title: "Start a Web Design Project in Devon",
   description: "Tell us what you are working on and start a conversation about a better digital experience.",
   alternates: { canonical: "/contact" },
 }
