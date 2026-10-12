@@ -18,6 +18,7 @@ const projects = [
   { slug: "bandpress", name: "BandPress", industry: "Music / Media", services: "Brand direction / Digital experience", description: "A bold identity and digital presence for a music-focused platform.", image: "/images/portfolio/bandpress.png", layout: "split" },
   { slug: "capstones-lookout", name: "Capstones Lookout", industry: "Hospitality / Tourism", services: "Brand identity / Digital presence", description: "A distinctive visual identity rooted in Ilfracombe and the North Devon coast.", image: "/images/portfolio/capstones-lookout.png", layout: "split-reverse" },
   { slug: "upcoming-bands", name: "Upcoming Bands", industry: "Music / Community", services: "Brand identity / Digital experience", description: "A high-energy visual world for discovering new music.", image: "/images/portfolio/upcoming-bands.png", layout: "feature" },
+  { slug: "bishops-tawton", name: "Bishops Tawton Village Hub", industry: "Community / Local information", services: "Web design / Community platform / Content management", description: "A self-sustaining digital village hub built to keep a real community connected.", image: "/images/portfolio/bishops-tawton.png", layout: "split" },
   { slug: "meg-scoins", name: "Meg Scoins", industry: "Music / Entertainment", services: "Web design / Development / SEO", description: "A fresh new website for a North Devon vocalist.", image: "/images/portfolio/meg-scoins.jpeg", layout: "split" },
 ]
 
