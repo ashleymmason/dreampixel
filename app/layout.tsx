@@ -13,12 +13,12 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 
 export const metadata: Metadata = {
   title: {
-    default: "Dream Pixel — Better online. More you.",
+    default: "Dream Pixel | Web Design & SEO Agency in Barnstaple, Devon",
     template: "%s | Dream Pixel",
   },
   description:
-    "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
-  keywords: ["web design", "SEO", "digital marketing", "Devon", "Barnstaple", "website development"],
+    "Dream Pixel is a Barnstaple web design studio building fast, search-ready websites, e-commerce and local SEO for businesses across North Devon and beyond.",
+  keywords: ["web design Barnstaple", "web designer Barnstaple", "web design North Devon", "web design Bideford", "SEO Barnstaple", "website development Devon"],
   authors: [{ name: "Dream Pixel" }],
   creator: "Dream Pixel",
   publisher: "Dream Pixel",
@@ -28,17 +28,13 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://www.dreampixel.co.uk"),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://www.dreampixel.co.uk",
     siteName: "Dream Pixel",
-    title: "Dream Pixel | Web Design & Digital Marketing in Devon",
+    title: "Dream Pixel | Web Design & SEO Agency in Barnstaple, Devon",
     description:
-      "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
+      "Dream Pixel is a Barnstaple web design studio building fast, search-ready websites, e-commerce and local SEO for businesses across North Devon and beyond.",
     images: [
       {
         url: "/images/dream-pixel-social-default.jpeg",
@@ -50,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dream Pixel | Web Design & Digital Marketing in Devon",
+    title: "Dream Pixel | Web Design & SEO Agency in Barnstaple, Devon",
     description:
-      "Dream Pixel is an independent digital studio in Devon making distinctive websites and digital growth strategies for ambitious businesses.",
+      "Dream Pixel is a Barnstaple web design studio building fast, search-ready websites, e-commerce and local SEO for businesses across North Devon and beyond.",
     images: ["/images/dream-pixel-social-default.jpeg"],
   },
   robots: {

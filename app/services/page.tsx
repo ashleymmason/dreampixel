@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { groupServices, serviceGroups } from "@/lib/services"
 
-export const metadata = { title: "Digital services for ambitious businesses", description: "Web design, development, e-commerce and SEO services from Dream Pixel in Devon.", alternates: { canonical: "/services" } }
+export const metadata = { title: "Web Design, Development & SEO Services", description: "Web design, website development, e-commerce and SEO services from Dream Pixel, a Barnstaple studio serving North Devon businesses and beyond.", alternates: { canonical: "/services" } }
 
 export default function ServicesPage() {
   return <main className="overflow-hidden bg-background">

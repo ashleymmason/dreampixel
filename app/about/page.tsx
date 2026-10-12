@@ -24,7 +24,8 @@ const projects = [
 ]
 
 export const metadata = {
-  title: "About Dream Pixel | Digital Studio in Devon",
+  title: "About Our Barnstaple Web Design Studio",
+  alternates: { canonical: "/about" },
   description: "Meet Dream Pixel, an independent digital studio creating thoughtful websites, digital experiences and growth strategies in Devon and beyond.",
 }
 
