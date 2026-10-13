@@ -2,14 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Check, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-const process = [
-  ["01", "Discover", "Understand the business, audience, goals and problems before deciding what to build."],
-  ["02", "Strategy", "Define the structure, positioning, content and technical direction."],
-  ["03", "Design", "Create the visual and user experience system that makes the right things clear."],
-  ["04", "Build", "Develop the experience with performance, accessibility and search in mind."],
-  ["05", "Launch & grow", "Launch, measure, improve and support the work as the business moves forward."],
-] as const
+import OurProcess from "@/components/our-process"
 
 const values = [
   ["Think before you build", "Good work starts with understanding the problem."],
@@ -56,7 +49,18 @@ export default function About() {
 
       <section className="px-6 py-24 md:px-12 md:py-36"><div className="container"><div className="mb-16 max-w-4xl"><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent">The point of view / 03</p><h2 className="font-display text-5xl font-bold leading-[0.92] tracking-[-0.06em] md:text-8xl">Design gets attention. <span className="text-primary">Performance gets results.</span></h2></div><div className="grid gap-12 border-t border-border pt-8 lg:grid-cols-[0.7fr_1.3fr]"><p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">One connected system</p><div><p className="max-w-3xl text-2xl leading-tight text-foreground md:text-4xl">UX, design, development, technical SEO, content, performance and conversion are not separate jobs to hand off. They are parts of the same experience.</p><div className="mt-14 flex flex-wrap gap-3">{["UX", "Design", "Development", "Technical SEO", "Content", "Performance", "Conversion"].map((item, index) => <span key={item} className={`border px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] ${index % 3 === 0 ? "border-primary/50 text-primary" : index % 3 === 1 ? "border-accent/50 text-accent" : "border-border text-muted-foreground"}`}>{item}</span>)}</div></div></div></div></section>
 
-      <section className="bg-foreground px-6 py-24 text-background md:px-12 md:py-36"><div className="container"><div className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent">How we work / 04</p><h2 className="font-display text-5xl font-bold leading-none tracking-[-0.06em] md:text-8xl">From first thought<br /><span className="text-primary">to the next chapter.</span></h2></div><p className="max-w-xs text-background/60">A straightforward process, with enough room for the good ideas to emerge.</p></div><div className="grid border-t border-background/20">{process.map(([number, title, text]) => <div key={number} className="grid gap-6 border-b border-background/20 py-8 md:grid-cols-[0.2fr_0.5fr_1fr] md:items-start"><span className="font-mono text-sm text-accent">{number}</span><h3 className="font-display text-3xl font-bold tracking-[-0.04em] md:text-4xl">{title}</h3><p className="max-w-md leading-relaxed text-background/60">{text}</p></div>)}</div></div></section>
+      <OurProcess
+        eyebrow="Inside the studio"
+        title="A better way to move forward"
+        subtitle="The work stays clear because every stage has a purpose, a decision to make and a useful next step."
+        steps={[
+          { title: "Start with the useful questions", description: "We get close to the business, its people and the opportunity before jumping into layouts or technology." },
+          { title: "Shape the experience", description: "We turn what we learn into a sharper structure, clearer journeys and content that gives every page a job." },
+          { title: "Make the direction tangible", description: "Design gives the strategy a voice, creating an identity and interface that feel distinctive, confident and easy to use." },
+          { title: "Build for the real world", description: "The finished experience is developed with speed, accessibility, search and future changes in mind from the start." },
+          { title: "Keep the work moving", description: "After launch, we look at what people do, what the business needs next and where a small improvement can make a real difference." },
+        ]}
+      />
 
       <section className="px-6 py-24 md:px-12 md:py-36"><div className="container grid gap-16 lg:grid-cols-[0.7fr_1.3fr]"><div><p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-primary">Values / 05</p><h2 className="font-display text-5xl font-bold leading-none tracking-[-0.06em] md:text-7xl">Small enough<br />to <span className="text-accent">care.</span></h2></div><div className="grid border-t border-border">{values.map(([title, text], index) => <div key={title} className="grid gap-5 border-b border-border py-7 md:grid-cols-[0.15fr_0.7fr_1fr]"><span className="font-mono text-xs text-primary">0{index + 1}</span><h3 className="font-display text-2xl font-bold tracking-[-0.04em]">{title}</h3><p className="text-muted-foreground">{text}</p></div>)}</div></div></section>
 

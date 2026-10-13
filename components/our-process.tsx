@@ -34,9 +34,9 @@ const defaultSteps: ProcessStep[] = [
 ]
 
 export default function OurProcess({
-  eyebrow = "Our process",
-  title = "Our Process",
-  subtitle = "How we bring every site from idea to launch, clearly structured, with zero fuss.",
+  eyebrow = "How we work",
+  title = "From brief to momentum",
+  subtitle = "A clear, collaborative route from the first useful question to a digital experience that keeps getting better.",
   steps = defaultSteps,
   className = "",
 }: OurProcessProps) {
