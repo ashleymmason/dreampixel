@@ -5,6 +5,7 @@ import { FounderVisual } from "@/components/founder-visual"
 import { ArrowUpRight, Check, MoveRight, Sparkles } from "lucide-react"
 import ContactForm from "@/components/contact-form"
 import { insights } from "@/lib/insights"
+import OurProcess from "@/components/our-process"
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -21,13 +22,6 @@ const services = [
   { title: "Websites", intro: "The centre of your digital world.", items: ["Web design", "UX/UI", "Development", "E-commerce", "Website redesign"], href: "/services/web-design" },
   { title: "Growth", intro: "More of the right people finding you.", items: ["SEO", "Local SEO", "Content", "Digital PR", "Conversion optimisation"], href: "/services/seo" },
   { title: "Ongoing", intro: "A better site, month after month.", items: ["Hosting", "Maintenance", "Technical support", "Continuous optimisation"], href: "/services/website-maintenance" },
-]
-
-const process = [
-  ["01", "Discover", "We listen, ask the useful questions and find the opportunity."],
-  ["02", "Strategy", "A clear plan for what to say, build and measure."],
-  ["03", "Design & Build", "Thoughtful design and dependable technology, working as one."],
-  ["04", "Launch & Grow", "We launch with confidence, then keep improving what matters."],
 ]
 
 const faqs = [
@@ -93,7 +87,7 @@ export default function Home() {
 
       <section className="container py-24 md:py-36"><div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">A client perspective</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Made with<br />care.</h2></div><div><blockquote className="max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] md:text-6xl">“I cannot recommend Dream Pixel enough. They created my website within a tight deadline, working very closely with me to get it how I had visualised it.”</blockquote><p className="mt-8 text-sm uppercase tracking-[0.16em] text-muted-foreground">Sheila Shepherd · School of Reflexology</p></div></div></section>
 
-      <section className="bg-background py-24 text-foreground md:py-32"><div className="container"><div className="mb-14 flex items-end justify-between"><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--accent))]">The process</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">From first thought<br />to <span className="text-[hsl(var(--primary))]">next chapter.</span></h2></div></div><div className="grid border-t border-background/20 md:grid-cols-4">{process.map(([number, title, description]) => <div key={number} className="border-b border-background/20 py-7 md:border-b-0 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0"><span className="font-mono text-xs text-foreground/50">{number}</span><h3 className="mt-8 font-display text-3xl">{title}</h3><p className="mt-4 text-sm leading-6 text-foreground/60">{description}</p></div>)}</div></div></section>
+      <OurProcess />
 
       <section className="container py-24 md:py-36"><div className="grid gap-12 md:grid-cols-[1fr_1fr] md:items-center"><FounderVisual /><div><p className="mb-5 text-sm uppercase tracking-[0.18em] text-[hsl(var(--primary))]">About Dream Pixel</p><h2 className="font-display text-6xl leading-[0.86] tracking-[-0.07em] md:text-8xl">Small studio.<br /><span className="text-muted-foreground">Big care.</span></h2><p className="mt-8 max-w-lg text-lg leading-7 text-muted-foreground">We are an independent digital studio in Barnstaple, Devon. Close enough to know the local landscape, ambitious enough to build for anywhere.</p><Link href="/about" className="mt-8 inline-flex items-center gap-3 border-b border-foreground pb-3 text-sm font-semibold uppercase tracking-[0.16em] hover:text-[hsl(var(--primary))]">Meet Dream Pixel <ArrowUpRight aria-hidden="true" /></Link></div></div></section>
 
