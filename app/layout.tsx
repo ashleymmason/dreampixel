@@ -7,7 +7,6 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import CookieConsent from "@/components/cookie-consent"
 import MobileActionBar from "@/components/mobile-action-bar"
-import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
@@ -91,60 +90,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} bg-background`} suppressHydrationWarning>
-      <head>
-        <meta name="google-site-verification" content="JIrLMp8Z3RLYR8_yQRbZLtNRK2j3YWo_jCppOhwepkA" />
-        <link rel="icon" href="/favicon.png" sizes="any" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#0a0a0a" />
-
-        {/* Google Analytics with Consent Mode */}
-        <Script
-          id="gtag-consent"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              
-              // Set default consent mode
-              gtag('consent', 'default', {
-                'analytics_storage': 'denied',
-                'ad_storage': 'denied',
-                'wait_for_update': 500
-              });
-              
-              // Check for existing consent
-              const consent = localStorage.getItem('cookie-consent');
-              if (consent === 'accepted') {
-                gtag('consent', 'update', {
-                  'analytics_storage': 'granted'
-                });
-              }
-            `,
-          }}
-        />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-D91WT2D7JC" strategy="afterInteractive" />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-D91WT2D7JC', {
-                page_path: window.location.pathname,
-                transport_type: 'beacon',
-                send_page_view: true,
-                cookie_domain: 'auto'
-              });
-            `,
-          }}
-        />
-      </head>
+      <head />
       <body className={`${inter.className} bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="flex min-h-screen flex-col bg-background">

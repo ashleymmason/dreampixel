@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Cookie, X } from "lucide-react"
 import Link from "next/link"
+import Script from "next/script"
 
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [analyticsEnabled, setAnalyticsEnabled] = useState(false)
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -16,7 +18,7 @@ export default function CookieConsent() {
     if (!consent) {
       setShowBanner(true)
     } else if (consent === "accepted") {
-      // Enable analytics if previously accepted
+      setAnalyticsEnabled(true)
       enableAnalytics()
     }
     setIsLoaded(true)
@@ -42,6 +44,7 @@ export default function CookieConsent() {
 
   const acceptCookies = () => {
     localStorage.setItem("cookie-consent", "accepted")
+    setAnalyticsEnabled(true)
     enableAnalytics()
     setShowBanner(false)
   }
@@ -52,12 +55,18 @@ export default function CookieConsent() {
     setShowBanner(false)
   }
 
-  if (!isLoaded || !showBanner) {
+  if (!isLoaded) {
     return null
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4" role="dialog" aria-label="Cookie preferences" aria-describedby="cookie-consent-description">
+    <>
+      {analyticsEnabled && <>
+        <Script id="gtag-consent" strategy="afterInteractive">{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'granted' });`}</Script>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-D91WT2D7JC" strategy="lazyOnload" />
+        <Script id="google-analytics" strategy="lazyOnload">{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-D91WT2D7JC', { page_path: window.location.pathname, transport_type: 'beacon', send_page_view: true, cookie_domain: 'auto' });`}</Script>
+      </>}
+      {showBanner && <div className="fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4" role="dialog" aria-label="Cookie preferences" aria-describedby="cookie-consent-description">
       <Card className="mx-auto max-w-4xl border border-primary/60 bg-background shadow-2xl">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
@@ -82,12 +91,13 @@ export default function CookieConsent() {
                 </Button>
               </div>
             </div>
-            <Button variant="ghost" size="sm" onClick={declineCookies} className="shrink-0" aria-label="Close cookie preferences">
+            <Button variant="ghost" size="sm" onClick={declineCookies} className="size-11 shrink-0" aria-label="Close cookie preferences">
               <X className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>}
+    </>
   )
 }
