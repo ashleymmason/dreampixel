@@ -91,6 +91,12 @@
   .container { padding-inline: 1.25rem; }
 }
 
+/* Keep the initial mobile render focused on the hero and first viewport. */
+main > div > section:nth-child(n + 3) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
 @layer utilities {
   .text-balance { text-wrap: balance; }
 }
